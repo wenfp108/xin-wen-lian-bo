@@ -1,0 +1,28 @@
+name: 🧹 手动清理旧数据
+
+on:
+  workflow_dispatch: # 这个指令代表允许在网页上点击按钮手动运行
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v3
+
+    - name: 安装 Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 运行清理脚本
+      run: node clean.js
+
+    - name: 提交并推送清理结果
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        # 如果有改动就提交，没改动就不报错
+        git commit -m "🧹 清理 2026-04-01 之前的旧数据" || echo "没有需要清理的数据"
+        git push
