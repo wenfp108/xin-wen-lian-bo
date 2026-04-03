@@ -1,7 +1,7 @@
 import fetch from './fetch.js';
 import jsdom from 'jsdom';
 const { JSDOM } = jsdom;
-import puppeteer from 'puppeteer'; // 【新增】引入无头浏览器
+import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path, { resolve } from 'path';
 
@@ -15,7 +15,7 @@ const getDate = () => {
 	const date = new Date();
 	return '' + date.getFullYear() + add0(date.getMonth() + 1) + add0(date.getDate());
 }
-const DATE = "20260402"; // 自动获取当前日期
+const DATE = getDate(); 
 const NEWS_PATH = path.join(__dirname, 'news');
 const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
 const README_PATH = path.join(__dirname, 'README.md');
@@ -77,17 +77,16 @@ const getNews = async links => {
 	console.log('共', linksLength, '则新闻, 开始获取');
 	var news = [];
     
-    // 【新增】启动模拟浏览器 (添加 GitHub Actions 必备参数)
+    // 启动模拟浏览器
     const browser = await puppeteer.launch({
-        headless: true, // 无头模式（不显示界面）
-        args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+        headless: true, 
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'] // 增加防崩溃参数
     });
-    const page = await browser.newPage();
 
 	for (let i = 0; i < linksLength; i++) {
 		const url = links[i];
 		
-        // 【第1步】用传统的静态方式抓取文字（速度快、稳定）
+        // 【第1步】用传统的静态方式抓取文字
         const html = await fetch(url);
 		const dom = new JSDOM(html);
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
@@ -95,38 +94,40 @@ const getNews = async links => {
         
         let duration = '简讯无视频';
 
-        // 【第2步】用浏览器真实打开页面去“看”视频时间
+        // 【核心修复】：为每一个新闻都开一个全新、干净的标签页！
+        const page = await browser.newPage();
+
         try {
+            // 加快基础页面加载判断
             await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
             
-            // 核心魔法：死盯页面，等待那个动态的类名出现（最多等6秒）
-            await page.waitForSelector('.vjs-duration-display', { timeout: 6000 });
+            // 【核心修复】：耐心增加！等 15 秒（15000毫秒），给海外服务器留足缓冲视频的时间
+            await page.waitForSelector('.vjs-duration-display', { timeout: 15000 });
             
-            // 如果出现了，就提取里面的文字
             let text = await page.$eval('.vjs-duration-display', el => el.innerText);
             
             if (text) {
-                // 清理掉可能的 "时长 " 或者不可见字符，只留 "03:43"
                 text = text.replace(/时长/g, '').replace(/\s/g, '').trim();
-                // 排除一开始还没加载出来时的 "0:00"
                 if (text && text !== '0:00' && text !== '00:00') {
                     duration = text;
                 }
             }
         } catch (e) {
-            console.log(`[提示] 页面 [${title}] 未渲染出视频时间 (属于无视频简讯)`);
+            console.log(`[提示] 页面 [${title}] 等了15秒未加载出时间，可能属于纯文字简讯。`);
+        } finally {
+            // 【核心修复】：用完立刻关掉这个标签页，释放资源！不影响下一个
+            await page.close();
         }
 
 		news.push({ title, content, duration });
-		console.count('获取的新闻则数');
+		console.count(`已获取: ${title} - 时长: ${duration}`);
 
         if (i < linksLength - 1) { 
-            console.log(`等待 3 秒后抓取下一篇...`);
-            await delay(3000); 
+            await delay(2000); // 稍微停顿一下再抓下一个
         }
 	}
     
-    await browser.close(); // 全部抓完后，关掉浏览器
+    await browser.close(); // 全部抓完后，彻底关掉浏览器
 	console.log('成功获取所有新闻');
 	return news;
 }
