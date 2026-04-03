@@ -1,7 +1,7 @@
-import fetch from './fetch.js'; 
-import nodeFetch from 'node-fetch'; 
+import fetch from './fetch.js';
 import jsdom from 'jsdom';
 const { JSDOM } = jsdom;
+import puppeteer from 'puppeteer'; // 【新增】引入无头浏览器
 import fs from 'fs';
 import path, { resolve } from 'path';
 
@@ -15,7 +15,7 @@ const getDate = () => {
 	const date = new Date();
 	return '' + date.getFullYear() + add0(date.getMonth() + 1) + add0(date.getDate());
 }
-const DATE = "20260402";
+const DATE = getDate(); // 自动获取当前日期
 const NEWS_PATH = path.join(__dirname, 'news');
 const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
 const README_PATH = path.join(__dirname, 'README.md');
@@ -76,56 +76,45 @@ const getNews = async links => {
 	const linksLength = links.length;
 	console.log('共', linksLength, '则新闻, 开始获取');
 	var news = [];
+    
+    // 【新增】启动模拟浏览器 (添加 GitHub Actions 必备参数)
+    const browser = await puppeteer.launch({
+        headless: true, // 无头模式（不显示界面）
+        args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+    });
+    const page = await browser.newPage();
+
 	for (let i = 0; i < linksLength; i++) {
 		const url = links[i];
-		const html = await fetch(url);
+		
+        // 【第1步】用传统的静态方式抓取文字（速度快、稳定）
+        const html = await fetch(url);
 		const dom = new JSDOM(html);
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
 		const content = dom.window.document.querySelector('#content_area')?.innerHTML;
         
         let duration = '简讯无视频';
-        
-        const guidMatch = html.match(/var\s+guid\s*=\s*["']([a-zA-Z0-9]+)["']/i);
-        
-        if (guidMatch && guidMatch[1]) {
-            const videoGuid = guidMatch[1];
-            try {
-                const apiUrl = `https://api.cntv.cn/video/videoinfoByGuid?guid=${videoGuid}&serviceId=tvcctv`;
-                const apiRes = await nodeFetch(apiUrl, {
-                    method: "GET",
-                    headers: {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
-                        "Referer": "https://tv.cctv.com/" 
-                    }
-                });
-                
-                let apiResText = await apiRes.text();
-                apiResText = apiResText.replace(/^[^{]+/, '').replace(/[^}]+$/, '');
-                const videoData = JSON.parse(apiResText);
-                
-                // 【修复核心1】去除了会误导的 videoData.time，只拿绝对代表时长的字段
-                let totalLengthStr = videoData?.video?.totalLength || videoData?.video?.duration || videoData?.duration;
-                
-                if (totalLengthStr !== undefined && totalLengthStr !== null && totalLengthStr !== "") {
-                    const strVal = String(totalLengthStr).trim();
-                    
-                    // 【修复核心2】严格正则判断：如果它全是数字（允许带小数点，例如 "223" 或 "223.5"）
-                    if (/^\d+(\.\d+)?$/.test(strVal)) {
-                        const totalSeconds = Math.round(Number(strVal));
-                        if (totalSeconds > 0) {
-                            const minutes = Math.floor(totalSeconds / 60);
-                            const seconds = totalSeconds % 60;
-                            duration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                        }
-                    } 
-                    // 【修复核心3】严格正则判断：如果它是标准的 "MM:SS" 或 "HH:MM:SS" 格式，坚决过滤掉带日期的字符串
-                    else if (/^(\d{1,2}:)?\d{1,2}:\d{2}$/.test(strVal)) {
-                        duration = strVal.startsWith('00:') ? strVal.substring(3) : strVal;
-                    }
+
+        // 【第2步】用浏览器真实打开页面去“看”视频时间
+        try {
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            
+            // 核心魔法：死盯页面，等待那个动态的类名出现（最多等6秒）
+            await page.waitForSelector('.vjs-duration-display', { timeout: 6000 });
+            
+            // 如果出现了，就提取里面的文字
+            let text = await page.$eval('.vjs-duration-display', el => el.innerText);
+            
+            if (text) {
+                // 清理掉可能的 "时长 " 或者不可见字符，只留 "03:43"
+                text = text.replace(/时长/g, '').replace(/\s/g, '').trim();
+                // 排除一开始还没加载出来时的 "0:00"
+                if (text && text !== '0:00' && text !== '00:00') {
+                    duration = text;
                 }
-            } catch (e) {
-                console.log(`\n[报错] 抓取/解析视频 [${videoGuid}] 时长失败:`, e.message);
             }
+        } catch (e) {
+            console.log(`[提示] 页面 [${title}] 未渲染出视频时间 (属于无视频简讯)`);
         }
 
 		news.push({ title, content, duration });
@@ -136,6 +125,8 @@ const getNews = async links => {
             await delay(3000); 
         }
 	}
+    
+    await browser.close(); // 全部抓完后，关掉浏览器
 	console.log('成功获取所有新闻');
 	return news;
 }
@@ -172,6 +163,7 @@ const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract
 	console.log('更新 README.md 完成');
 }
 
+// ========== 程序执行入口 ==========
 const newsList = await getNewsList(DATE);
 
 await delay(2000); 
