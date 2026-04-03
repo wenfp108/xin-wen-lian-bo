@@ -83,15 +83,39 @@ const getNews = async links => {
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
 		const content = dom.window.document.querySelector('#content_area')?.innerHTML;
         
-        // 🔥 【核心黑科技】跳过前端渲染，直接从央视网页最原始的代码里把时间挖出来！
-        let duration = '';
-        const timeMatch = html.match(/var\s+duration\s*=\s*["'](\d{1,2}:\d{2}(?::\d{2})?)["']/i);
-        if (timeMatch && timeMatch[1]) {
-            duration = timeMatch[1]; // 成功抓到真实时长，例如 "04:53"
-        } else {
-            // 备用方案
-            const backupMatch = html.match(/duration["'\s:=]+(\d{1,2}:\d{2}(?::\d{2})?)/i);
-            duration = backupMatch ? backupMatch[1] : '简讯无视频';
+        // 🔥 【全新黑科技】先抓取视频的唯一身份证(guid)，再通过央视底层API获取真实时长！
+        let duration = '简讯无视频';
+        
+        // 第一步：用正则在原始 HTML 里挖出 guid 
+        const guidMatch = html.match(/var\s+guid\s*=\s*["']([a-zA-Z0-9]+)["']/i);
+        
+        if (guidMatch && guidMatch[1]) {
+            const videoGuid = guidMatch[1];
+            try {
+                // 第二步：拿着 guid 去请求真实的视频详情 API
+                const apiUrl = `https://api.cntv.cn/video/videoinfoByGuid?guid=${videoGuid}&serviceId=tvcctv`;
+                
+                // 注意：你项目中自定义的 fetch.js 返回的是文本格式
+                let apiResText = await fetch(apiUrl);
+                
+                // 兼容处理：清理掉可能存在的 JSONP 包裹字符，只保留纯 JSON
+                apiResText = apiResText.replace(/^[^{]+/, '').replace(/[^}]+$/, '');
+                
+                // 解析 JSON 数据
+                const videoData = JSON.parse(apiResText);
+                
+                // 提取视频总时长
+                if (videoData && videoData.video && videoData.video.totalLength) {
+                    const totalSeconds = Math.round(Number(videoData.video.totalLength));
+                    
+                    // 将纯秒数转换为 "分:秒" 的格式
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+                    duration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            } catch (e) {
+                console.log(`获取/解析视频 [${videoGuid}] 时长失败:`, e.message);
+            }
         }
 
 		news.push({ title, content, duration });
