@@ -1,4 +1,5 @@
-import fetch from './fetch.js';
+import fetch from './fetch.js'; 
+import nodeFetch from 'node-fetch'; // 【新增】引入原生的 node-fetch，专门用来请求被保护的API
 import jsdom from 'jsdom';
 const { JSDOM } = jsdom;
 import fs from 'fs';
@@ -7,7 +8,7 @@ import path, { resolve } from 'path';
 import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// 【新增】延迟函数，用来保护对方服务器，避免抓取太快被封
+// 延迟函数，用来保护对方服务器，避免抓取太快被封
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const getDate = () => {
@@ -83,7 +84,7 @@ const getNews = async links => {
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
 		const content = dom.window.document.querySelector('#content_area')?.innerHTML;
         
-        // 🔥 【全新黑科技】先抓取视频的唯一身份证(guid)，再通过央视底层API获取真实时长！
+        // 🔥 【终极黑科技】先抓取视频guid，再通过原生 nodeFetch 伪造请求头破解防盗链获取时长！
         let duration = '简讯无视频';
         
         // 第一步：用正则在原始 HTML 里挖出 guid 
@@ -95,33 +96,43 @@ const getNews = async links => {
                 // 第二步：拿着 guid 去请求真实的视频详情 API
                 const apiUrl = `https://api.cntv.cn/video/videoinfoByGuid?guid=${videoGuid}&serviceId=tvcctv`;
                 
-                // 注意：你项目中自定义的 fetch.js 返回的是文本格式
-                let apiResText = await fetch(apiUrl);
+                // 【核心修复】抛弃 fetch.js，直接用 nodeFetch 伪造请求头破解防盗链！
+                const apiRes = await nodeFetch(apiUrl, {
+                    method: "GET",
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
+                        "Referer": "https://tv.cctv.com/" // 这是破解防盗链的关键，假装是从央视网页发出的请求
+                    }
+                });
                 
-                // 兼容处理：清理掉可能存在的 JSONP 包裹字符，只保留纯 JSON
+                let apiResText = await apiRes.text();
+                
+                // 清理掉可能存在的 JSONP 包裹字符，只保留纯 JSON
                 apiResText = apiResText.replace(/^[^{]+/, '').replace(/[^}]+$/, '');
-                
-                // 解析 JSON 数据
                 const videoData = JSON.parse(apiResText);
                 
-                // 提取视频总时长
-                if (videoData && videoData.video && videoData.video.totalLength) {
-                    const totalSeconds = Math.round(Number(videoData.video.totalLength));
+                // 获取时长，增加多个字段的兼容容错处理
+                let totalLengthStr = videoData?.video?.totalLength || videoData?.time || videoData?.duration;
+                
+                if (totalLengthStr) {
+                    const totalSeconds = Math.round(Number(totalLengthStr));
                     
                     // 将纯秒数转换为 "分:秒" 的格式
                     const minutes = Math.floor(totalSeconds / 60);
                     const seconds = totalSeconds % 60;
                     duration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    console.log(`\n[警告] 接口未返回时长字段，接口返回数据片段为: ${apiResText.substring(0, 100)}...`);
                 }
             } catch (e) {
-                console.log(`获取/解析视频 [${videoGuid}] 时长失败:`, e.message);
+                console.log(`\n[报错] 抓取/解析视频 [${videoGuid}] 时长失败:`, e.message);
             }
         }
 
 		news.push({ title, content, duration });
 		console.count('获取的新闻则数');
 
-        // 【新增】每抓完一条，等待3秒钟，然后再抓下一条
+        // 每抓完一条，等待3秒钟，然后再抓下一条
         if (i < linksLength - 1) { 
             console.log(`等待 3 秒后抓取下一篇...`);
             await delay(3000); 
@@ -138,7 +149,7 @@ const newsToMarkdown = ({ date, abstract, news, links }) => {
         const { title, content, duration } = news[i]; 
 		const link = links[i];
         
-        // 🔥 【排版修改】完全按照你的要求：标题下面紧跟着真实时长，然后是文本和原文链接
+        // 排版修改：标题下面紧跟着真实时长，然后是文本和原文链接
 		mdNews += `### ${title}\n\n**视频时长:** ${duration}\n\n${content}\n\n[查看原文](${link})\n\n`;
 	}
 	return `# 《新闻联播》 (${date})\n\n## 新闻摘要\n\n${abstract}\n\n## 详细新闻\n\n${mdNews}\n\n---\n\n(更新时间戳: ${new Date().getTime()})\n\n`;
