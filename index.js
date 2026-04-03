@@ -5,42 +5,25 @@ import fs from 'fs';
 import path, { resolve } from 'path';
 
 import { fileURLToPath } from "url";
-// const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// 【新增功能】添加一个通用的延迟函数，用来保护对方服务器
+// 【新增】延迟函数，用来保护对方服务器，避免抓取太快被封
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-/**
- * 得到当前日期
- * @returns 当前日期, 格式如: 20220929
- */
 const getDate = () => {
 	const add0 = num => num < 10 ? ('0' + num) : num;
 	const date = new Date();
 	return '' + date.getFullYear() + add0(date.getMonth() + 1) + add0(date.getDate());
 }
-// 当前日期
 const DATE = getDate();
-// /news 目录
 const NEWS_PATH = path.join(__dirname, 'news');
-// /news/xxxxxxxx.md 文件
 const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
-// /README.md 文件
 const README_PATH = path.join(__dirname, 'README.md');
-// /news/catalogue.json 文件
 const CATALOGUE_JSON_PATH = path.join(NEWS_PATH, 'catalogue.json');
-// 打印调试信息
+
 console.log('DATE:', DATE);
 console.log('NEWS_PATH:', NEWS_PATH);
-console.log('README_PATH:', README_PATH);
-console.log('CATALOGUE_JSON_PATH:', CATALOGUE_JSON_PATH);
 
-/**
- * 读取文件
- * @param {String} path 需读取文件的路径
- * @returns {String} (Primise) 文件内容
- */
 const readFile = path => {
 	return new Promise((resolve, reject) => {
 		fs.readFile(path, {}, (err, data) => {
@@ -50,12 +33,6 @@ const readFile = path => {
 	});
 };
 
-/**
- * 写入文件 (覆写)
- * @param {String} path 需写入文件的路径
- * @param {String} data 需写入的数据
- * @returns {*} (Primise)
- */
 const writeFile = (path, data) => {
 	return new Promise((resolve, reject) => {
 		fs.writeFile(path, data, err => {
@@ -65,11 +42,6 @@ const writeFile = (path, data) => {
 	});
 };
 
-/**
- * 获取新闻列表
- * @param {String|Number} date 当前日期
- * @returns {Object} abstract为简介的链接, news为新闻链接数组
- */
 const getNewsList = async date => {
 	const HTML = await fetch(`http://tv.cctv.com/lm/xwlb/day/${date}.shtml`);
 	const fullHTML = `<!DOCTYPE html><html><head></head><body>${HTML}</body></html>`;
@@ -77,57 +49,32 @@ const getNewsList = async date => {
 	const nodes = dom.window.document.querySelectorAll('a');
 	var links = [];
 	nodes.forEach(node => {
-		// 从dom节点获得href中的链接
 		let link = node.href;
-		// 如果已经有了就不再添加 (去重)
 		if (!links.includes(link)) links.push(link);
 	});
 	const abstract = links.shift();
 	console.log('成功获取新闻列表');
-	return {
-		abstract,
-		news: links
-	}
+	return { abstract, news: links }
 }
 
-/**
- * 获取新闻摘要 (简介)
- * @param {String} link 简介的链接
- * @returns {String} 简介内容
- */
 const getAbstract = async link => {
-	// 【新增安全判断】防止没有获取到简介链接
-	if (!link) {
-		console.log('未找到简介链接');
-		return '今日暂无简介链接';
-	}
-
+	if (!link) return '今日暂无简介链接';
 	const HTML = await fetch(link);
 	const dom = new JSDOM(HTML);
-	
-	// 【修复报错】分步获取节点，增加容错保护
 	const abstractNode = dom.window.document.querySelector(
 		'#page_body > div.allcontent > div.video18847 > div.playingCon > div.nrjianjie_shadow > div > ul > li:nth-child(1) > p'
 	);
-
 	if (abstractNode && abstractNode.innerHTML) {
 		console.log('成功获取新闻简介');
 		return abstractNode.innerHTML.replaceAll('；', "；\n\n").replaceAll('：', "：\n\n");
 	} else {
-		console.log('⚠️ 警告：未能获取到新闻简介，可能央视尚未更新或网页结构已改变');
 		return '今日新闻简介暂未发布或抓取失败。';
 	}
 }
 
-/**
- * 获取新闻本体
- * @param {Array} links 链接数组
- * @returns {Object} title为新闻标题, content为新闻内容, duration为视频时长
- */
 const getNews = async links => {
 	const linksLength = links.length;
 	console.log('共', linksLength, '则新闻, 开始获取');
-	// 所有新闻
 	var news = [];
 	for (let i = 0; i < linksLength; i++) {
 		const url = links[i];
@@ -136,65 +83,56 @@ const getNews = async links => {
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
 		const content = dom.window.document.querySelector('#content_area')?.innerHTML;
         
-        // 【新增功能】提取视频时长
-        const durationNode = dom.window.document.querySelector('.vjs-duration-display');
-        let duration = '未知时长'; // 默认值，防止某些没有时长的页面报错
-        if (durationNode) {
-            duration = durationNode.textContent.trim();
+        // 🔥 【核心黑科技】跳过前端渲染，直接从央视网页最原始的代码里把时间挖出来！
+        let duration = '';
+        const timeMatch = html.match(/var\s+duration\s*=\s*["'](\d{1,2}:\d{2}(?::\d{2})?)["']/i);
+        if (timeMatch && timeMatch[1]) {
+            duration = timeMatch[1]; // 成功抓到真实时长，例如 "04:53"
+        } else {
+            // 备用方案
+            const backupMatch = html.match(/duration["'\s:=]+(\d{1,2}:\d{2}(?::\d{2})?)/i);
+            duration = backupMatch ? backupMatch[1] : '简讯无视频';
         }
 
-        // 将时长 duration 也保存到数组中
 		news.push({ title, content, duration });
 		console.count('获取的新闻则数');
 
-        // 【新增功能】每次抓取完一篇后，强制等待 3 秒 (保护对方服务器)
-        if (i < linksLength - 1) { // 最后一篇抓完后就不用等了
-            console.log(`等待 3 秒后继续抓取下一篇...`);
-            await delay(3000);
+        // 【新增】每抓完一条，等待3秒钟，然后再抓下一条
+        if (i < linksLength - 1) { 
+            console.log(`等待 3 秒后抓取下一篇...`);
+            await delay(3000); 
         }
 	}
 	console.log('成功获取所有新闻');
 	return news;
 }
 
-/**
- * 将数据处理为md格式
- * @param {Object} object date为获取的时间, abstract为新闻简介, news为新闻数组, links为新闻链接
- * @returns {String} 处理成功后的md文本
- */
 const newsToMarkdown = ({ date, abstract, news, links }) => {
-	// 将数据处理为md文档
 	let mdNews = '';
 	const newsLength = news.length;
 	for (let i = 0; i < newsLength; i++) {
-        // 【修改】在这里解构出 duration
-		const { title, content, duration } = news[i]; 
+        const { title, content, duration } = news[i]; 
 		const link = links[i];
-        // 【修改】在标题下方增加视频时长的显示
+        
+        // 🔥 【排版修改】完全按照你的要求：标题下面紧跟着真实时长，然后是文本和原文链接
 		mdNews += `### ${title}\n\n**视频时长:** ${duration}\n\n${content}\n\n[查看原文](${link})\n\n`;
 	}
 	return `# 《新闻联播》 (${date})\n\n## 新闻摘要\n\n${abstract}\n\n## 详细新闻\n\n${mdNews}\n\n---\n\n(更新时间戳: ${new Date().getTime()})\n\n`;
 }
 
 const saveTextToFile = async (savePath, text) => {
-	// 输出到文件
 	await writeFile(savePath, text);
 }
 
 const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract }) => {
-	// 更新 catalogue.json
 	await readFile(catalogueJsonPath).then(async data => {
 		data = data.toString();
 		let catalogueJson = JSON.parse(data || '[]');
-		catalogueJson.unshift({
-			date,
-			abstract,
-		});
+		catalogueJson.unshift({ date, abstract });
 		let textJson = JSON.stringify(catalogueJson);
 		await writeFile(catalogueJsonPath, textJson);
 	});
 	console.log('更新 catalogue.json 完成');
-	// 更新 README.md
 	await readFile(readmeMdPath).then(async data => {
 		data = data.toString();
 		let text = data.replace('', `\n- [${date}](./news/${date}.md)`)
@@ -205,13 +143,11 @@ const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract
 
 const newsList = await getNewsList(DATE);
 
-// 获取完列表稍微等一下，防拦截
-console.log('等待 2 秒后获取简介...');
+// 获取列表后等2秒
 await delay(2000); 
 const abstract = await getAbstract(newsList.abstract);
 
-// 获取正文前再等一下，防拦截
-console.log('等待 2 秒后开始获取新闻正文...');
+// 获取正文前等2秒
 await delay(2000); 
 const news = await getNews(newsList.news);
 
@@ -221,14 +157,11 @@ const md = newsToMarkdown({
 	news,
 	links: newsList.news
 });
-
 await saveTextToFile(NEWS_MD_PATH, md);
-
 await updateCatalogue({ 
 	catalogueJsonPath: CATALOGUE_JSON_PATH,
 	readmeMdPath: README_PATH,
 	date: DATE,
 	abstract: abstract
 });
-
 console.log('全部成功, 程序结束');
