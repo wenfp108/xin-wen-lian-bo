@@ -15,7 +15,7 @@ const getDate = () => {
 	const date = new Date();
 	return '' + date.getFullYear() + add0(date.getMonth() + 1) + add0(date.getDate());
 }
-const DATE = getDate(); // 自动获取当前日期
+const DATE = "20260402"; // 自动获取当前日期
 const NEWS_PATH = path.join(__dirname, 'news');
 const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
 const README_PATH = path.join(__dirname, 'README.md');
