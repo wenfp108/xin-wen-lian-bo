@@ -1,0 +1,40 @@
+name: 🧪 手动测试/补抓特定日期
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: '请输入要抓取的日期 (例如：20260402)'
+        required: true
+        default: '20260402' # 默认直接填好昨天的日期
+
+jobs:
+  test_fetch:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v3
+
+    - name: 安装 Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: 安装依赖
+      run: npm install
+
+    - name: 临时修改脚本日期并运行测试
+      run: |
+        # 魔法指令：临时把 index.js 里的自动获取日期，替换成你在网页上输入的日期
+        sed -i 's/const DATE = getDate();/const DATE = "${{ github.event.inputs.target_date }}";/' index.js
+        
+        # 运行抓取程序
+        node index.js
+
+    - name: 提交并推送测试结果到仓库
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "🧪 测试/手动抓取 ${{ github.event.inputs.target_date }} 的数据" || echo "抓取内容无变化"
+        git push
