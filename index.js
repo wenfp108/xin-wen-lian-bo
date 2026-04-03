@@ -1,7 +1,7 @@
 import fetch from './fetch.js';
+import nodeFetch from 'node-fetch'; // 再次请出原生的 fetch
 import jsdom from 'jsdom';
 const { JSDOM } = jsdom;
-import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path, { resolve } from 'path';
 
@@ -15,7 +15,7 @@ const getDate = () => {
 	const date = new Date();
 	return '' + date.getFullYear() + add0(date.getMonth() + 1) + add0(date.getDate());
 }
-const DATE = "20260402"; 
+const DATE = getDate(); 
 const NEWS_PATH = path.join(__dirname, 'news');
 const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
 const README_PATH = path.join(__dirname, 'README.md');
@@ -76,17 +76,10 @@ const getNews = async links => {
 	const linksLength = links.length;
 	console.log('共', linksLength, '则新闻, 开始获取');
 	var news = [];
-    
-    // 启动模拟浏览器
-    const browser = await puppeteer.launch({
-        headless: true, 
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'] // 增加防崩溃参数
-    });
 
 	for (let i = 0; i < linksLength; i++) {
 		const url = links[i];
 		
-        // 【第1步】用传统的静态方式抓取文字
         const html = await fetch(url);
 		const dom = new JSDOM(html);
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
@@ -94,40 +87,56 @@ const getNews = async links => {
         
         let duration = '简讯无视频';
 
-        // 【核心修复】：为每一个新闻都开一个全新、干净的标签页！
-        const page = await browser.newPage();
-
-        try {
-            // 加快基础页面加载判断
-            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-            
-            // 【核心修复】：耐心增加！等 15 秒（15000毫秒），给海外服务器留足缓冲视频的时间
-            await page.waitForSelector('.vjs-duration-display', { timeout: 15000 });
-            
-            let text = await page.$eval('.vjs-duration-display', el => el.innerText);
-            
-            if (text) {
-                text = text.replace(/时长/g, '').replace(/\s/g, '').trim();
-                if (text && text !== '0:00' && text !== '00:00') {
-                    duration = text;
+        // 第一步：挖出视频的专属身份证 guid
+        const guidMatch = html.match(/var\s+guid\s*=\s*["']([a-zA-Z0-9]+)["']/i);
+        
+        if (guidMatch && guidMatch[1]) {
+            const videoGuid = guidMatch[1];
+            try {
+                // 【终极方案】：调用央视底层 VDN 视频分发网络接口
+                // 加上 client=html5 参数，它会乖乖返回最纯粹的 JSON 视频信息
+                const vdnUrl = `https://vdn.apps.cntv.cn/api/getHttpVideoInfo.do?pid=${videoGuid}&client=html5`;
+                const apiRes = await nodeFetch(vdnUrl, {
+                    method: "GET",
+                    headers: {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
+                        "Referer": "https://tv.cctv.com/" 
+                    }
+                });
+                
+                const apiResText = await apiRes.text();
+                const videoData = JSON.parse(apiResText);
+                
+                // VDN 接口里，总时长一定藏在 video.totalLength 里
+                let totalLengthStr = videoData?.video?.totalLength || (videoData?.video?.chapters && videoData.video.chapters.length > 0 ? videoData.video.chapters[0].duration : "");
+                
+                if (totalLengthStr !== undefined && totalLengthStr !== null && totalLengthStr !== "") {
+                    const strVal = String(totalLengthStr).trim();
+                    
+                    if (strVal.includes(':')) {
+                        duration = strVal.startsWith('00:') ? strVal.substring(3) : strVal;
+                    } else {
+                        const totalSeconds = Math.round(Number(strVal));
+                        if (!isNaN(totalSeconds) && totalSeconds > 0) {
+                            const minutes = Math.floor(totalSeconds / 60);
+                            const seconds = totalSeconds % 60;
+                            duration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        }
+                    }
                 }
+            } catch (e) {
+                console.log(`[提示] 接口未返回视频 [${videoGuid}] 的时长数据。`);
             }
-        } catch (e) {
-            console.log(`[提示] 页面 [${title}] 等了15秒未加载出时间，可能属于纯文字简讯。`);
-        } finally {
-            // 【核心修复】：用完立刻关掉这个标签页，释放资源！不影响下一个
-            await page.close();
         }
 
 		news.push({ title, content, duration });
 		console.count(`已获取: ${title} - 时长: ${duration}`);
 
         if (i < linksLength - 1) { 
-            await delay(2000); // 稍微停顿一下再抓下一个
+            await delay(2000); 
         }
 	}
     
-    await browser.close(); // 全部抓完后，彻底关掉浏览器
 	console.log('成功获取所有新闻');
 	return news;
 }
