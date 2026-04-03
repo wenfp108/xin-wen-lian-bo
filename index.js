@@ -85,13 +85,11 @@ const getNews = async links => {
         
         let duration = '简讯无视频';
         
-        // 第一步：挖出 guid 
         const guidMatch = html.match(/var\s+guid\s*=\s*["']([a-zA-Z0-9]+)["']/i);
         
         if (guidMatch && guidMatch[1]) {
             const videoGuid = guidMatch[1];
             try {
-                // 第二步：请求接口
                 const apiUrl = `https://api.cntv.cn/video/videoinfoByGuid?guid=${videoGuid}&serviceId=tvcctv`;
                 const apiRes = await nodeFetch(apiUrl, {
                     method: "GET",
@@ -105,27 +103,24 @@ const getNews = async links => {
                 apiResText = apiResText.replace(/^[^{]+/, '').replace(/[^}]+$/, '');
                 const videoData = JSON.parse(apiResText);
                 
-                // 拿到原始时长数据
-                let totalLengthStr = videoData?.video?.totalLength || videoData?.time || videoData?.duration;
+                // 【修复核心1】去除了会误导的 videoData.time，只拿绝对代表时长的字段
+                let totalLengthStr = videoData?.video?.totalLength || videoData?.video?.duration || videoData?.duration;
                 
                 if (totalLengthStr !== undefined && totalLengthStr !== null && totalLengthStr !== "") {
                     const strVal = String(totalLengthStr).trim();
                     
-                    // 【修复核心】场景1：如果已经是带冒号的格式（例如 "03:43" 或 "00:03:43"），直接使用
-                    if (strVal.includes(':')) {
-                        // 如果是 "00:03:43"，只保留后面的 "03:43" 让他更整洁
-                        duration = strVal.startsWith('00:') ? strVal.substring(3) : strVal;
-                    } 
-                    // 【修复核心】场景2：如果是纯数字秒数（例如 "223"），再做数学换算
-                    else {
+                    // 【修复核心2】严格正则判断：如果它全是数字（允许带小数点，例如 "223" 或 "223.5"）
+                    if (/^\d+(\.\d+)?$/.test(strVal)) {
                         const totalSeconds = Math.round(Number(strVal));
-                        if (!isNaN(totalSeconds) && totalSeconds > 0) {
+                        if (totalSeconds > 0) {
                             const minutes = Math.floor(totalSeconds / 60);
                             const seconds = totalSeconds % 60;
                             duration = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                        } else if (totalSeconds === 0) {
-                             duration = '简讯无视频';
                         }
+                    } 
+                    // 【修复核心3】严格正则判断：如果它是标准的 "MM:SS" 或 "HH:MM:SS" 格式，坚决过滤掉带日期的字符串
+                    else if (/^(\d{1,2}:)?\d{1,2}:\d{2}$/.test(strVal)) {
+                        duration = strVal.startsWith('00:') ? strVal.substring(3) : strVal;
                     }
                 }
             } catch (e) {
