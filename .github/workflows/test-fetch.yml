@@ -18,7 +18,7 @@ jobs:
     - name: 安装 Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: 20 # 👈 【核心修改】这里必须改成 20，以支持最新的 Puppeteer
         
     - name: 安装依赖
       run: npm install
