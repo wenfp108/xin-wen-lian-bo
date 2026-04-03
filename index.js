@@ -96,13 +96,27 @@ const getNewsList = async date => {
  * @returns {String} 简介内容
  */
 const getAbstract = async link => {
+	// 【新增安全判断】防止没有获取到简介链接
+	if (!link) {
+		console.log('未找到简介链接');
+		return '今日暂无简介链接';
+	}
+
 	const HTML = await fetch(link);
 	const dom = new JSDOM(HTML);
-	const abstract = dom.window.document.querySelector(
+	
+	// 【修复报错】分步获取节点，增加容错保护
+	const abstractNode = dom.window.document.querySelector(
 		'#page_body > div.allcontent > div.video18847 > div.playingCon > div.nrjianjie_shadow > div > ul > li:nth-child(1) > p'
-	).innerHTML.replaceAll('；', "；\n\n").replaceAll('：', "：\n\n");
-	console.log('成功获取新闻简介');
-	return abstract;
+	);
+
+	if (abstractNode && abstractNode.innerHTML) {
+		console.log('成功获取新闻简介');
+		return abstractNode.innerHTML.replaceAll('；', "；\n\n").replaceAll('：', "：\n\n");
+	} else {
+		console.log('⚠️ 警告：未能获取到新闻简介，可能央视尚未更新或网页结构已改变');
+		return '今日新闻简介暂未发布或抓取失败。';
+	}
 }
 
 /**
@@ -135,7 +149,7 @@ const getNews = async links => {
 
         // 【新增功能】每次抓取完一篇后，强制等待 3 秒 (保护对方服务器)
         if (i < linksLength - 1) { // 最后一篇抓完后就不用等了
-            console.log(`已等待 3 秒，准备获取下一篇...`);
+            console.log(`等待 3 秒后继续抓取下一篇...`);
             await delay(3000);
         }
 	}
@@ -190,12 +204,15 @@ const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract
 }
 
 const newsList = await getNewsList(DATE);
+
+// 获取完列表稍微等一下，防拦截
 console.log('等待 2 秒后获取简介...');
-await delay(2000); // 获取完列表也稍微等一下
+await delay(2000); 
 const abstract = await getAbstract(newsList.abstract);
 
+// 获取正文前再等一下，防拦截
 console.log('等待 2 秒后开始获取新闻正文...');
-await delay(2000); // 获取正文前再等一下
+await delay(2000); 
 const news = await getNews(newsList.news);
 
 const md = newsToMarkdown({
@@ -204,11 +221,14 @@ const md = newsToMarkdown({
 	news,
 	links: newsList.news
 });
+
 await saveTextToFile(NEWS_MD_PATH, md);
+
 await updateCatalogue({ 
 	catalogueJsonPath: CATALOGUE_JSON_PATH,
 	readmeMdPath: README_PATH,
 	date: DATE,
 	abstract: abstract
 });
+
 console.log('全部成功, 程序结束');
