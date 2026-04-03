@@ -8,7 +8,7 @@ const README_PATH = path.join(__dirname, 'README.md');
 const CATALOGUE_JSON_PATH = path.join(NEWS_PATH, 'catalogue.json');
 
 // 设定你要保留的分界线：小于这个日期的全删掉
-const CUTOFF_DATE = "20260401"; 
+const CUTOFF_DATE = "20260405"; 
 
 console.log(`--- 🧹 开始执行历史数据大扫除 (删除 ${CUTOFF_DATE} 之前的数据) ---`);
 
