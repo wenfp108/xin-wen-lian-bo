@@ -8,6 +8,9 @@ import { fileURLToPath } from "url";
 // const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// 【新增功能】添加一个通用的延迟函数，用来保护对方服务器
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 /**
  * 得到当前日期
  * @returns 当前日期, 格式如: 20220929
@@ -105,7 +108,7 @@ const getAbstract = async link => {
 /**
  * 获取新闻本体
  * @param {Array} links 链接数组
- * @returns {Object} title为新闻标题, content为新闻内容
+ * @returns {Object} title为新闻标题, content为新闻内容, duration为视频时长
  */
 const getNews = async links => {
 	const linksLength = links.length;
@@ -118,8 +121,23 @@ const getNews = async links => {
 		const dom = new JSDOM(html);
 		const title = dom.window.document.querySelector('#page_body > div.allcontent > div.video18847 > div.playingVideo > div.tit')?.innerHTML?.replace('[视频]', '');
 		const content = dom.window.document.querySelector('#content_area')?.innerHTML;
-		news.push({ title, content });
+        
+        // 【新增功能】提取视频时长
+        const durationNode = dom.window.document.querySelector('.vjs-duration-display');
+        let duration = '未知时长'; // 默认值，防止某些没有时长的页面报错
+        if (durationNode) {
+            duration = durationNode.textContent.trim();
+        }
+
+        // 将时长 duration 也保存到数组中
+		news.push({ title, content, duration });
 		console.count('获取的新闻则数');
+
+        // 【新增功能】每次抓取完一篇后，强制等待 3 秒 (保护对方服务器)
+        if (i < linksLength - 1) { // 最后一篇抓完后就不用等了
+            console.log(`已等待 3 秒，准备获取下一篇...`);
+            await delay(3000);
+        }
 	}
 	console.log('成功获取所有新闻');
 	return news;
@@ -135,9 +153,11 @@ const newsToMarkdown = ({ date, abstract, news, links }) => {
 	let mdNews = '';
 	const newsLength = news.length;
 	for (let i = 0; i < newsLength; i++) {
-		const { title, content } = news[i];
+        // 【修改】在这里解构出 duration
+		const { title, content, duration } = news[i]; 
 		const link = links[i];
-		mdNews += `### ${title}\n\n${content}\n\n[查看原文](${link})\n\n`;
+        // 【修改】在标题下方增加视频时长的显示
+		mdNews += `### ${title}\n\n**视频时长:** ${duration}\n\n${content}\n\n[查看原文](${link})\n\n`;
 	}
 	return `# 《新闻联播》 (${date})\n\n## 新闻摘要\n\n${abstract}\n\n## 详细新闻\n\n${mdNews}\n\n---\n\n(更新时间戳: ${new Date().getTime()})\n\n`;
 }
@@ -163,15 +183,21 @@ const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract
 	// 更新 README.md
 	await readFile(readmeMdPath).then(async data => {
 		data = data.toString();
-		let text = data.replace('<!-- INSERT -->', `<!-- INSERT -->\n- [${date}](./news/${date}.md)`)
+		let text = data.replace('', `\n- [${date}](./news/${date}.md)`)
 		await writeFile(readmeMdPath, text);
 	});
 	console.log('更新 README.md 完成');
 }
 
 const newsList = await getNewsList(DATE);
+console.log('等待 2 秒后获取简介...');
+await delay(2000); // 获取完列表也稍微等一下
 const abstract = await getAbstract(newsList.abstract);
+
+console.log('等待 2 秒后开始获取新闻正文...');
+await delay(2000); // 获取正文前再等一下
 const news = await getNews(newsList.news);
+
 const md = newsToMarkdown({
 	date: DATE,
 	abstract,
