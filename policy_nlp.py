@@ -177,7 +177,9 @@ def extract_keywords(text, top_n=20):
 # ============================================
 def process_day(date_str):
     news_dir = Path(__file__).parent / "news"
-    md_file = news_dir / f"{date_str}.md"
+    year = date_str[:4]
+    month = date_str[4:6]
+    md_file = news_dir / year / month / f"{date_str}.md"
     if not md_file.exists():
         return None
 
@@ -221,7 +223,8 @@ def process_day(date_str):
 # ============================================
 def analyze_trends(days=7):
     news_dir = Path(__file__).parent / "news"
-    files = sorted(news_dir.glob("*.md"))
+    # 递归搜索所有 .md 文件
+    files = sorted(news_dir.rglob("*.md"))
     if not files:
         return None
 
@@ -254,7 +257,7 @@ def analyze_trends(days=7):
 def generate_report(date_str=None):
     if not date_str:
         news_dir = Path(__file__).parent / "news"
-        files = sorted(news_dir.glob("*.md"))
+        files = sorted(news_dir.rglob("*.md"))
         if not files:
             return None, None
         date_str = files[-1].stem
@@ -328,7 +331,7 @@ def save_result(report, date_str):
 # ============================================
 def process_all():
     news_dir = Path(__file__).parent / "news"
-    files = sorted(news_dir.glob("*.md"))
+    files = sorted(news_dir.rglob("*.md"))
     if not files:
         print("⚠️ 无新闻文件")
         return

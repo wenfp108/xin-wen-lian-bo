@@ -17,7 +17,10 @@ const getDate = () => {
 }
 const DATE = getDate();
 const NEWS_PATH = path.join(__dirname, 'news');
-const NEWS_MD_PATH = path.join(NEWS_PATH, DATE + '.md');
+const YEAR = DATE.substring(0, 4);
+const MONTH = DATE.substring(4, 6);
+const NEWS_YEAR_MONTH_PATH = path.join(NEWS_PATH, YEAR, MONTH);
+const NEWS_MD_PATH = path.join(NEWS_YEAR_MONTH_PATH, DATE + '.md');
 const README_PATH = path.join(__dirname, 'README.md');
 const CATALOGUE_JSON_PATH = path.join(NEWS_PATH, 'catalogue.json');
 
@@ -161,14 +164,38 @@ const updateCatalogue = async ({ catalogueJsonPath, readmeMdPath, date, abstract
 		data = data.toString();
 		let catalogueJson = JSON.parse(data || '[]');
 		catalogueJson.unshift({ date, abstract });
+		// 只保留最近30天的目录
+		if (catalogueJson.length > 30) catalogueJson = catalogueJson.slice(0, 30);
 		let textJson = JSON.stringify(catalogueJson);
 		await writeFile(catalogueJsonPath, textJson);
 	});
 	console.log('更新 catalogue.json 完成');
+
+	// 生成最近7天的新闻列表
+	const year = date.substring(0, 4);
+	const month = date.substring(4, 6);
+	const recentDays = [];
+	for (let i = 0; i < 7; i++) {
+		const d = new Date();
+		d.setDate(d.getDate() - i);
+		const ds = d.getFullYear().toString() +
+			(d.getMonth() + 1).toString().padStart(2, '0') +
+			d.getDate().toString().padStart(2, '0');
+		const y = ds.substring(0, 4);
+		const m = ds.substring(4, 6);
+		recentDays.push(`- [${ds}](./news/${y}/${m}/${ds}.md)`);
+	}
+
 	await readFile(readmeMdPath).then(async data => {
 		data = data.toString();
-		let text = data.replace('', `\n- [${date}](./news/${date}.md)`)
-		await writeFile(readmeMdPath, text);
+		// 替换新闻列表部分（在 "## 新闻列表" 之后的内容）
+		const marker = '## 新闻列表';
+		const markerIndex = data.indexOf(marker);
+		if (markerIndex >= 0) {
+			const before = data.substring(0, markerIndex);
+			const newText = before + marker + '\n\n' + recentDays.join('\n') + '\n';
+			await writeFile(readmeMdPath, newText);
+		}
 	});
 	console.log('更新 README.md 完成');
 }
@@ -188,6 +215,8 @@ const md = newsToMarkdown({
 	news,
 	links: newsList.news
 });
+// 确保年/月目录存在
+fs.mkdirSync(NEWS_YEAR_MONTH_PATH, { recursive: true });
 await saveTextToFile(NEWS_MD_PATH, md);
 await updateCatalogue({ 
 	catalogueJsonPath: CATALOGUE_JSON_PATH,
