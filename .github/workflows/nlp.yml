@@ -20,12 +20,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run NLP Analysis
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: python policy_nlp.py run
-
-      - name: Commit results
-        run: |
-          git config --local user.email "github-actions[bot]@github.com"
-          git config --local user.name "github-actions[bot]"
-          git add results/
-          git diff --staged --quiet || git commit -m "📰 NLP 分析结果 [bot]"
-          git push

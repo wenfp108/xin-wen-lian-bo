@@ -1,15 +1,26 @@
 """
 新闻联播 NLP 分析器
 流程：读取本地新闻 → jieba分词 → 关键词提取 → 权重打分 → 行业映射 → 输出结果
+输出：JSON 结果推送到 Central-Bank 仓库
 """
 
-import json, re, sys
+import json, re, sys, os
 from pathlib import Path
 from collections import Counter
 from datetime import datetime
 
 import jieba
 import jieba.analyse
+from github import Github, Auth
+
+# GitHub 连接
+GITHUB_TOKEN = os.environ.get("GH_PAT")
+if GITHUB_TOKEN:
+    auth = Auth.Token(GITHUB_TOKEN)
+    gh_client = Github(auth=auth)
+    bank_repo = gh_client.get_repo("wenfp108/Central-Bank")
+else:
+    bank_repo = None
 
 # ============================================
 # 1. 关键词 → 行业映射表
@@ -311,20 +322,32 @@ def generate_report(date_str=None):
 # 8. 保存结果
 # ============================================
 def save_result(report, date_str):
-    result_dir = Path(__file__).parent / "results"
-    result_dir.mkdir(exist_ok=True)
-
-    # 保存 Markdown 报告
-    md_path = result_dir / f"{date_str}.md"
-    md_path.write_text(report, encoding="utf-8")
-
-    # 保存 JSON 数据（供其他程序读取）
     result = process_day(date_str)
-    if result:
-        json_path = result_dir / f"{date_str}.json"
-        json_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    if not result:
+        return
 
-    print(f"✅ 已保存: results/{date_str}.md + .json")
+    json_content = json.dumps(result, ensure_ascii=False, indent=2)
+
+    # 推送到 Central-Bank
+    if bank_repo:
+        path = f"data/policy/{date_str}.json"
+        try:
+            try:
+                old = bank_repo.get_contents(path)
+                bank_repo.update_file(old.path, f"📰 更新: {date_str} 政策分析", json_content, old.sha)
+                print(f"✅ 已更新: Central-Bank/{path}")
+            except Exception:
+                bank_repo.create_file(path, f"📰 新增: {date_str} 政策分析", json_content)
+                print(f"✅ 已创建: Central-Bank/{path}")
+        except Exception as e:
+            print(f"❌ 推送失败: {e}")
+    else:
+        # 本地保存（无 GH_PAT 时）
+        result_dir = Path(__file__).parent / "results"
+        result_dir.mkdir(exist_ok=True)
+        json_path = result_dir / f"{date_str}.json"
+        json_path.write_text(json_content, encoding="utf-8")
+        print(f"✅ 已保存: results/{date_str}.json")
 
 # ============================================
 # 9. 批量处理所有新闻

@@ -1,18 +1,16 @@
 # 新闻联播文字稿 + NLP 分析
 
-自动抓取新闻联播文字稿，每日 NLP 分析政策信号。
+自动抓取新闻联播文字稿，每日 NLP 分析政策信号，结果推送到 [Central-Bank](https://github.com/wenfp108/Central-Bank)。
 
 ## NLP 分析
 
 `policy_nlp.py` — jieba 分词 + 关键词提取 + 行业映射 + 权重打分
 
 ```bash
-python policy_nlp.py run        # 分析最新一天
+python policy_nlp.py run        # 分析最新一天（推送到 Central-Bank）
 python policy_nlp.py all        # 批量处理所有
 python policy_nlp.py trends 7   # 7天趋势
 ```
-
-分析结果保存在 `results/` 目录（.md 报告 + .json 数据）。
 
 权重计算：
 - **序号分**：新闻联播按重要性排序，第1条=10分，第2条=9分...
