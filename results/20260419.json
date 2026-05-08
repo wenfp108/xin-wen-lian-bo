@@ -1,0 +1,217 @@
+{
+  "date": "20260419",
+  "news_count": 14,
+  "sector_scores": {
+    "科技": 12,
+    "消费": 11,
+    "军工": 8,
+    "农业": 6,
+    "新能源": 6,
+    "能源": 5,
+    "基建": 4,
+    "金融": 3,
+    "汽车": 2,
+    "半导体": 1
+  },
+  "top_keywords": [
+    [
+      "18",
+      0.0729
+    ],
+    [
+      "伊朗",
+      0.0496
+    ],
+    [
+      "19",
+      0.0416
+    ],
+    [
+      "服务业",
+      0.0358
+    ],
+    [
+      "发展",
+      0.0311
+    ],
+    [
+      "网络",
+      0.0297
+    ],
+    [
+      "一季度",
+      0.0282
+    ],
+    [
+      "网络安全",
+      0.0278
+    ],
+    [
+      "推进",
+      0.0275
+    ],
+    [
+      "举行",
+      0.0264
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】筑牢网络强国基石 赋能高质量发展",
+      "duration": "05:57",
+      "sectors": {
+        "半导体": 1,
+        "科技": 4
+      },
+      "signal_score": 49,
+      "duration_score": 10,
+      "total_score": 68
+    },
+    {
+      "index": 2,
+      "title": "【树立和践行正确政绩观】知行合一 务求实效",
+      "duration": "03:52",
+      "sectors": {},
+      "signal_score": 18,
+      "duration_score": 6,
+      "total_score": 32
+    },
+    {
+      "index": 3,
+      "title": "服务业稳中向好 新动能加快成长",
+      "duration": "01:43",
+      "sectors": {
+        "消费": 4
+      },
+      "signal_score": 5,
+      "duration_score": 1,
+      "total_score": 13
+    },
+    {
+      "index": 4,
+      "title": "国家发展改革委下达2026年第二批“两重”建设项目清单",
+      "duration": "00:50",
+      "sectors": {
+        "科技": 1
+      },
+      "signal_score": 17,
+      "duration_score": 0,
+      "total_score": 23
+    },
+    {
+      "index": 5,
+      "title": "我国加力推进粮油作物大面积单产提升行动",
+      "duration": "01:45",
+      "sectors": {
+        "农业": 5
+      },
+      "signal_score": 9,
+      "duration_score": 1,
+      "total_score": 15
+    },
+    {
+      "index": 6,
+      "title": "第139届广交会第一期线下展今天闭展",
+      "duration": "01:00",
+      "sectors": {
+        "新能源": 1,
+        "科技": 1,
+        "军工": 1,
+        "能源": 1,
+        "汽车": 2
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 5
+    },
+    {
+      "index": 7,
+      "title": "村里有了“小而美” 游客爱上“慢时光”",
+      "duration": "02:33",
+      "sectors": {
+        "科技": 1,
+        "消费": 6,
+        "农业": 1
+      },
+      "signal_score": 5,
+      "duration_score": 3,
+      "total_score": 11
+    },
+    {
+      "index": 8,
+      "title": "北方有大风沙尘 南方降水增多增强",
+      "duration": "00:48",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 2
+    },
+    {
+      "index": 9,
+      "title": "国内联播快讯",
+      "duration": "02:43",
+      "sectors": {
+        "新能源": 5,
+        "科技": 5,
+        "消费": 1,
+        "基建": 4,
+        "金融": 3,
+        "能源": 1
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 6
+    },
+    {
+      "index": 10,
+      "title": "日本民众举行大规模集会 反对高市政权危险动向",
+      "duration": "01:18",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 11,
+      "title": "伊朗宣布再次封锁霍尔木兹海峡 美军称完全切断伊朗海路贸易",
+      "duration": "01:51",
+      "sectors": {},
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 3
+    },
+    {
+      "index": 12,
+      "title": "以军称打击黎南部多地武装人员 黎真主党称将对违反停火行为作出回应",
+      "duration": "00:51",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 13,
+      "title": "国际航协称欧洲可能因缺油停飞航班",
+      "duration": "00:24",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 14,
+      "title": "国际联播快讯",
+      "duration": "02:02",
+      "sectors": {
+        "军工": 6,
+        "能源": 3
+      },
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 3
+    }
+  ]
+}

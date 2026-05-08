@@ -1,0 +1,228 @@
+{
+  "date": "20260421",
+  "news_count": 16,
+  "sector_scores": {
+    "农业": 8,
+    "科技": 7,
+    "能源": 4,
+    "新能源": 2,
+    "半导体": 2,
+    "医药": 1,
+    "基建": 1,
+    "军工": 1,
+    "房地产": 1
+  },
+  "top_keywords": [
+    [
+      "21",
+      0.0901
+    ],
+    [
+      "习近平",
+      0.0859
+    ],
+    [
+      "查波",
+      0.0676
+    ],
+    [
+      "合作",
+      0.0602
+    ],
+    [
+      "中方",
+      0.0581
+    ],
+    [
+      "愿同",
+      0.0541
+    ],
+    [
+      "20",
+      0.0541
+    ],
+    [
+      "01",
+      0.0451
+    ],
+    [
+      "中老",
+      0.0371
+    ],
+    [
+      "莫桑比克",
+      0.0317
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "习近平举行仪式欢迎莫桑比克总统访华",
+      "duration": "02:21",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 12
+    },
+    {
+      "index": 2,
+      "title": "习近平同莫桑比克总统会谈",
+      "duration": "05:17",
+      "sectors": {
+        "新能源": 2,
+        "科技": 2,
+        "医药": 1,
+        "农业": 2,
+        "能源": 3
+      },
+      "signal_score": 14,
+      "duration_score": 10,
+      "total_score": 32
+    },
+    {
+      "index": 3,
+      "title": "习近平会见老挝人民革命党中央总书记、国家主席特使沙伦赛",
+      "duration": "02:05",
+      "sectors": {},
+      "signal_score": 13,
+      "duration_score": 3,
+      "total_score": 23
+    },
+    {
+      "index": 4,
+      "title": "李强会见莫桑比克总统",
+      "duration": "01:00",
+      "sectors": {
+        "能源": 1
+      },
+      "signal_score": 5,
+      "duration_score": 1,
+      "total_score": 12
+    },
+    {
+      "index": 5,
+      "title": "赵乐际会见莫桑比克总统",
+      "duration": "01:08",
+      "sectors": {
+        "农业": 1
+      },
+      "signal_score": 8,
+      "duration_score": 1,
+      "total_score": 14
+    },
+    {
+      "index": 6,
+      "title": "赵乐际会见欧洲议会副议长",
+      "duration": "01:01",
+      "sectors": {},
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 8
+    },
+    {
+      "index": 7,
+      "title": "韩正会见孟加拉国民族主义党高级干部考察团",
+      "duration": "00:58",
+      "sectors": {},
+      "signal_score": 4,
+      "duration_score": 0,
+      "total_score": 7
+    },
+    {
+      "index": 8,
+      "title": "国务院印发《关于推进服务业扩能提质的意见》",
+      "duration": "00:49",
+      "sectors": {},
+      "signal_score": 12,
+      "duration_score": 0,
+      "total_score": 14
+    },
+    {
+      "index": 9,
+      "title": "一季度我国数字产业持续壮大",
+      "duration": "01:41",
+      "sectors": {
+        "半导体": 1,
+        "科技": 3
+      },
+      "signal_score": 4,
+      "duration_score": 1,
+      "total_score": 6
+    },
+    {
+      "index": 10,
+      "title": "一季度长三角地区出口合计占全国41%",
+      "duration": "01:30",
+      "sectors": {
+        "半导体": 1,
+        "科技": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 11,
+      "title": "各地举办多种活动共促全民阅读 共建书香社会",
+      "duration": "01:38",
+      "sectors": {
+        "科技": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 12,
+      "title": "国务院新闻办举行“新征程上的奋斗者”中外记者见面会",
+      "duration": "00:38",
+      "sectors": {},
+      "signal_score": 4,
+      "duration_score": 0,
+      "total_score": 4
+    },
+    {
+      "index": 13,
+      "title": "国内联播快讯",
+      "duration": "01:54",
+      "sectors": {
+        "基建": 1,
+        "农业": 5
+      },
+      "signal_score": 4,
+      "duration_score": 1,
+      "total_score": 5
+    },
+    {
+      "index": 14,
+      "title": "日本民众集会抗议政府解禁武器出口 日本人士批评高市政权做法违反宪法",
+      "duration": "01:41",
+      "sectors": {},
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 15,
+      "title": "美称协议达成前对伊朗海上封锁持续 伊朗称美试图以封锁迫使伊方投降",
+      "duration": "02:24",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 3
+    },
+    {
+      "index": 16,
+      "title": "国际联播快讯",
+      "duration": "01:53",
+      "sectors": {
+        "房地产": 1
+      },
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 2
+    }
+  ]
+}

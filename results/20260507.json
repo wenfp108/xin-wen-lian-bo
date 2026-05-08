@@ -1,0 +1,226 @@
+{
+  "date": "20260507",
+  "news_count": 14,
+  "sector_scores": {
+    "能源": 55,
+    "新能源": 42,
+    "消费": 21,
+    "科技": 9,
+    "军工": 9,
+    "汽车": 6,
+    "医药": 3,
+    "农业": 3,
+    "基建": 2,
+    "半导体": 1
+  },
+  "top_keywords": [
+    [
+      "能源",
+      0.0588
+    ],
+    [
+      "我国",
+      0.0442
+    ],
+    [
+      "伊朗",
+      0.0384
+    ],
+    [
+      "美方",
+      0.0318
+    ],
+    [
+      "推动",
+      0.0307
+    ],
+    [
+      "发展",
+      0.0307
+    ],
+    [
+      "美国",
+      0.0292
+    ],
+    [
+      "乌方",
+      0.0287
+    ],
+    [
+      "增长",
+      0.0281
+    ],
+    [
+      "问题",
+      0.0263
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】新型能源体系加快建设 筑牢能源安全根基",
+      "duration": "06:22",
+      "sectors": {
+        "新能源": 30,
+        "科技": 1,
+        "消费": 1,
+        "能源": 46,
+        "汽车": 2
+      },
+      "signal_score": 46,
+      "duration_score": 10,
+      "total_score": 70
+    },
+    {
+      "index": 2,
+      "title": "李强会见乌兹别克斯坦总理",
+      "duration": "00:58",
+      "sectors": {
+        "能源": 1
+      },
+      "signal_score": 5,
+      "duration_score": 0,
+      "total_score": 13
+    },
+    {
+      "index": 3,
+      "title": "李强会见美国国会参议员代表团",
+      "duration": "00:58",
+      "sectors": {},
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 9
+    },
+    {
+      "index": 4,
+      "title": "赵乐际会见美国国会参议员代表团",
+      "duration": "00:58",
+      "sectors": {},
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 8
+    },
+    {
+      "index": 5,
+      "title": "【“十五五”开好局起好步】奋力谱写中国式现代化甘肃篇章 推动吉林全面振兴取得新突破",
+      "duration": "03:15",
+      "sectors": {
+        "新能源": 6,
+        "医药": 1,
+        "农业": 3,
+        "能源": 6,
+        "汽车": 2
+      },
+      "signal_score": 24,
+      "duration_score": 6,
+      "total_score": 35
+    },
+    {
+      "index": 6,
+      "title": "【树立和践行正确政绩观】办好为民实事 推动学习教育走深走实",
+      "duration": "02:54",
+      "sectors": {
+        "科技": 2,
+        "医药": 2
+      },
+      "signal_score": 10,
+      "duration_score": 3,
+      "total_score": 17
+    },
+    {
+      "index": 7,
+      "title": "“五一”假期国内出游3.25亿人次",
+      "duration": "01:29",
+      "sectors": {
+        "科技": 1,
+        "消费": 13
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 8,
+      "title": "天舟九号货运飞船顺利撤离空间站并受控再入大气层",
+      "duration": "00:38",
+      "sectors": {
+        "军工": 3
+      },
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 4
+    },
+    {
+      "index": 9,
+      "title": "一季度我国智能消费设备制造增长明显",
+      "duration": "01:29",
+      "sectors": {
+        "半导体": 1,
+        "科技": 4,
+        "消费": 7
+      },
+      "signal_score": 6,
+      "duration_score": 1,
+      "total_score": 13
+    },
+    {
+      "index": 10,
+      "title": "魏凤和案、李尚福案一审宣判",
+      "duration": "01:05",
+      "sectors": {
+        "军工": 2
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 11,
+      "title": "国内联播快讯",
+      "duration": "02:15",
+      "sectors": {
+        "新能源": 6,
+        "科技": 1,
+        "基建": 2,
+        "能源": 2,
+        "汽车": 2
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 5
+    },
+    {
+      "index": 12,
+      "title": "美总统称对美伊达成协议表示乐观 伊朗称美国必须赔偿伊朗损失",
+      "duration": "01:38",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 13,
+      "title": "俄外交部呼吁各国准备好及时从基辅撤离人员 乌称乌单方面停火后俄袭击未停",
+      "duration": "00:51",
+      "sectors": {
+        "军工": 2
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 14,
+      "title": "国际联播快讯",
+      "duration": "02:42",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 3
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "date": "20260416",
+  "news_count": 14,
+  "sector_scores": {
+    "科技": 23,
+    "消费": 11,
+    "新能源": 8,
+    "能源": 6,
+    "汽车": 6,
+    "军工": 6,
+    "基建": 5,
+    "医药": 4,
+    "农业": 3,
+    "半导体": 1,
+    "金融": 1
+  },
+  "top_keywords": [
+    [
+      "京津冀",
+      0.1046
+    ],
+    [
+      "协同",
+      0.0664
+    ],
+    [
+      "15",
+      0.0652
+    ],
+    [
+      "班列",
+      0.0434
+    ],
+    [
+      "增长",
+      0.0416
+    ],
+    [
+      "总书记",
+      0.0414
+    ],
+    [
+      "发展",
+      0.039
+    ],
+    [
+      "一季度",
+      0.0366
+    ],
+    [
+      "16",
+      0.0348
+    ],
+    [
+      "同比",
+      0.0336
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "《求是》杂志发表习近平总书记重要文章《推动全民阅读，建设书香社会》",
+      "duration": "01:55",
+      "sectors": {},
+      "signal_score": 9,
+      "duration_score": 1,
+      "total_score": 19
+    },
+    {
+      "index": 2,
+      "title": "【新思想引领新征程】推动京津冀协同发展不断迈上新台阶",
+      "duration": "05:57",
+      "sectors": {
+        "新能源": 3,
+        "半导体": 1,
+        "科技": 2,
+        "医药": 2,
+        "基建": 4,
+        "能源": 2,
+        "汽车": 5
+      },
+      "signal_score": 64,
+      "duration_score": 10,
+      "total_score": 82
+    },
+    {
+      "index": 3,
+      "title": "蔡奇同越共中央政治局委员、中央书记处常务书记陈锦绣举行会谈",
+      "duration": "01:46",
+      "sectors": {},
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 11
+    },
+    {
+      "index": 4,
+      "title": "我国一季度国内生产总值同比增长5.0% 国民经济实现良好开局",
+      "duration": "02:54",
+      "sectors": {
+        "科技": 2,
+        "军工": 1,
+        "消费": 5,
+        "医药": 2,
+        "农业": 2
+      },
+      "signal_score": 12,
+      "duration_score": 3,
+      "total_score": 21
+    },
+    {
+      "index": 5,
+      "title": "今年消费品以旧换新销售额突破5000亿元",
+      "duration": "00:52",
+      "sectors": {
+        "科技": 1,
+        "消费": 2,
+        "汽车": 1
+      },
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 12
+    },
+    {
+      "index": 6,
+      "title": "今年一季度中欧班列呈现量质齐升良好态势",
+      "duration": "01:36",
+      "sectors": {
+        "基建": 1
+      },
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 6
+    },
+    {
+      "index": 7,
+      "title": "第六届消博会公众开放日今天开启",
+      "duration": "00:35",
+      "sectors": {
+        "科技": 1
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 3
+    },
+    {
+      "index": 8,
+      "title": "第139届广交会：优质科创企业加速开拓国际市场",
+      "duration": "00:53",
+      "sectors": {
+        "新能源": 2
+      },
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 4
+    },
+    {
+      "index": 9,
+      "title": "【一线调研】算力之城：打造算电协同新生态",
+      "duration": "02:54",
+      "sectors": {
+        "新能源": 2,
+        "科技": 15,
+        "能源": 1
+      },
+      "signal_score": 1,
+      "duration_score": 3,
+      "total_score": 10
+    },
+    {
+      "index": 10,
+      "title": "百花竞放 文旅融合绘就春日好时光",
+      "duration": "01:48",
+      "sectors": {
+        "消费": 3
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 6
+    },
+    {
+      "index": 11,
+      "title": "国内联播快讯",
+      "duration": "02:10",
+      "sectors": {
+        "新能源": 1,
+        "科技": 2,
+        "军工": 1,
+        "消费": 1,
+        "金融": 1
+      },
+      "signal_score": 10,
+      "duration_score": 3,
+      "total_score": 13
+    },
+    {
+      "index": 12,
+      "title": "国际货币基金组织总裁表示中国经济有韧性 潜力大",
+      "duration": "00:35",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 13,
+      "title": "美媒称美军将继续增兵中东 伊朗军方称将回应美海上封锁",
+      "duration": "01:59",
+      "sectors": {
+        "军工": 1,
+        "能源": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 14,
+      "title": "国际联播快讯",
+      "duration": "01:55",
+      "sectors": {
+        "军工": 3,
+        "农业": 1,
+        "能源": 2
+      },
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 2
+    }
+  ]
+}

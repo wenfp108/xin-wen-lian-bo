@@ -1,0 +1,200 @@
+{
+  "date": "20260502",
+  "news_count": 13,
+  "sector_scores": {
+    "新能源": 28,
+    "消费": 16,
+    "汽车": 13,
+    "能源": 11,
+    "军工": 7,
+    "科技": 5,
+    "医药": 4,
+    "基建": 2
+  },
+  "top_keywords": [
+    [
+      "充电",
+      0.0612
+    ],
+    [
+      "五一",
+      0.0597
+    ],
+    [
+      "美国",
+      0.0493
+    ],
+    [
+      "伊朗",
+      0.0468
+    ],
+    [
+      "总书记",
+      0.0463
+    ],
+    [
+      "张勇",
+      0.0405
+    ],
+    [
+      "劳动",
+      0.0401
+    ],
+    [
+      "特朗普",
+      0.0395
+    ],
+    [
+      "假期",
+      0.0386
+    ],
+    [
+      "文旅",
+      0.034
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【实干笃行创伟业 团结奋斗新征程】劳动开创美好未来 奋斗铸就时代华章",
+      "duration": "04:54",
+      "sectors": {},
+      "signal_score": 10,
+      "duration_score": 6,
+      "total_score": 25
+    },
+    {
+      "index": 2,
+      "title": "以更大力度更实举措加强基础研究——习近平总书记在加强基础研究座谈会上的重要讲话引发热烈反响",
+      "duration": "04:21",
+      "sectors": {
+        "能源": 1
+      },
+      "signal_score": 36,
+      "duration_score": 6,
+      "total_score": 50
+    },
+    {
+      "index": 3,
+      "title": "人民日报评论员文章：抓住机遇，以更大力度更实举措加强基础研究——论学习贯彻习近平总书记在加强基础研究座谈会上重要讲话",
+      "duration": "00:18",
+      "sectors": {},
+      "signal_score": 10,
+      "duration_score": 0,
+      "total_score": 17
+    },
+    {
+      "index": 4,
+      "title": "【大国工匠】张勇：向深地挺进中的“井下神医”",
+      "duration": "03:03",
+      "sectors": {
+        "能源": 4
+      },
+      "signal_score": 2,
+      "duration_score": 6,
+      "total_score": 14
+    },
+    {
+      "index": 5,
+      "title": "“五一”假期 各地特色文旅活动精彩纷呈",
+      "duration": "02:48",
+      "sectors": {
+        "消费": 13
+      },
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 13
+    },
+    {
+      "index": 6,
+      "title": "绿色出行热度攀升 多举措保障充电需求",
+      "duration": "01:33",
+      "sectors": {
+        "新能源": 25,
+        "科技": 1,
+        "基建": 1,
+        "能源": 6,
+        "汽车": 11
+      },
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 17
+    },
+    {
+      "index": 7,
+      "title": "京津冀 黄河流域国家级自然保护区生态环保成效显著",
+      "duration": "01:06",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 8,
+      "title": "国内联播快讯",
+      "duration": "02:25",
+      "sectors": {
+        "新能源": 3,
+        "科技": 3,
+        "消费": 3,
+        "医药": 4
+      },
+      "signal_score": 9,
+      "duration_score": 3,
+      "total_score": 14
+    },
+    {
+      "index": 9,
+      "title": "推动非中经贸合作迈上新台阶——非洲政要积极评价中国对非洲建交国全面实施零关税举措",
+      "duration": "01:32",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 2
+    },
+    {
+      "index": 10,
+      "title": "中国担任安理会5月轮值主席 聚焦三项重点",
+      "duration": "00:51",
+      "sectors": {},
+      "signal_score": 5,
+      "duration_score": 0,
+      "total_score": 5
+    },
+    {
+      "index": 11,
+      "title": "伊朗提出美伊谈判最新方案 美称美伊敌对行动已结束",
+      "duration": "01:24",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 12,
+      "title": "国际联播快讯",
+      "duration": "02:14",
+      "sectors": {
+        "科技": 1,
+        "军工": 6,
+        "汽车": 2
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 5
+    },
+    {
+      "index": 13,
+      "title": "活力中国",
+      "duration": "01:29",
+      "sectors": {
+        "基建": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    }
+  ]
+}

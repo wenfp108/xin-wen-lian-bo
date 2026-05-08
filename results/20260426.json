@@ -1,0 +1,205 @@
+{
+  "date": "20260426",
+  "news_count": 12,
+  "sector_scores": {
+    "消费": 24,
+    "基建": 19,
+    "能源": 17,
+    "科技": 16,
+    "新能源": 8,
+    "军工": 6,
+    "农业": 5,
+    "半导体": 1,
+    "金融": 1,
+    "房地产": 1
+  },
+  "top_keywords": [
+    [
+      "25",
+      0.0824
+    ],
+    [
+      "廊桥",
+      0.0778
+    ],
+    [
+      "伊朗",
+      0.0378
+    ],
+    [
+      "2026",
+      0.0366
+    ],
+    [
+      "26",
+      0.0321
+    ],
+    [
+      "全国",
+      0.0309
+    ],
+    [
+      "旅游",
+      0.0295
+    ],
+    [
+      "能源",
+      0.0254
+    ],
+    [
+      "推动",
+      0.0241
+    ],
+    [
+      "01",
+      0.0229
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】我国加快完善现代化综合立体交通网",
+      "duration": "05:50",
+      "sectors": {
+        "新能源": 1,
+        "科技": 1,
+        "基建": 11,
+        "农业": 1
+      },
+      "signal_score": 48,
+      "duration_score": 10,
+      "total_score": 67
+    },
+    {
+      "index": 2,
+      "title": "【凝心聚力 真抓实干 奋力实现“十五五”良好开局】天津强化资源协同 推动新质生产力高质量发展 黑龙江以科技创新引领产业全面振兴",
+      "duration": "03:45",
+      "sectors": {
+        "新能源": 1,
+        "半导体": 1,
+        "科技": 7,
+        "农业": 3
+      },
+      "signal_score": 40,
+      "duration_score": 6,
+      "total_score": 54
+    },
+    {
+      "index": 3,
+      "title": "我国能源供给保障有力 能源安全韧性持续增强",
+      "duration": "01:40",
+      "sectors": {
+        "新能源": 6,
+        "科技": 3,
+        "消费": 4,
+        "能源": 14
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 16
+    },
+    {
+      "index": 4,
+      "title": "一季度高技术产业实际使用外资同比增长30.7%",
+      "duration": "01:20",
+      "sectors": {
+        "科技": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 7
+    },
+    {
+      "index": 5,
+      "title": "第139届广交会开展供采对接活动 助力企业拓市场",
+      "duration": "01:07",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 6
+    },
+    {
+      "index": 6,
+      "title": "新举措助跑旅游列车 激发消费新活力",
+      "duration": "01:31",
+      "sectors": {
+        "科技": 1,
+        "消费": 18,
+        "基建": 5
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 18
+    },
+    {
+      "index": 7,
+      "title": "【文化中国行】廊桥：飞虹跨碧水 千年系乡愁",
+      "duration": "03:30",
+      "sectors": {
+        "消费": 1,
+        "基建": 3,
+        "农业": 1
+      },
+      "signal_score": 2,
+      "duration_score": 6,
+      "total_score": 11
+    },
+    {
+      "index": 8,
+      "title": "国内联播快讯",
+      "duration": "03:38",
+      "sectors": {
+        "科技": 2,
+        "军工": 2,
+        "消费": 1,
+        "金融": 1,
+        "房地产": 1
+      },
+      "signal_score": 8,
+      "duration_score": 6,
+      "total_score": 16
+    },
+    {
+      "index": 9,
+      "title": "2026年APEC工商咨询理事会第二次会议举行",
+      "duration": "00:45",
+      "sectors": {
+        "科技": 1,
+        "能源": 2
+      },
+      "signal_score": 4,
+      "duration_score": 0,
+      "total_score": 5
+    },
+    {
+      "index": 10,
+      "title": "伊朗称不接受威胁下的谈判 美代表团取消赴巴基斯坦行程",
+      "duration": "01:32",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 11,
+      "title": "美国白宫记协晚宴发生枪击事件 美总统撤离",
+      "duration": "00:57",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 12,
+      "title": "国际联播快讯",
+      "duration": "02:03",
+      "sectors": {
+        "军工": 4,
+        "能源": 1
+      },
+      "signal_score": 4,
+      "duration_score": 3,
+      "total_score": 7
+    }
+  ]
+}

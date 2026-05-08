@@ -1,0 +1,209 @@
+{
+  "date": "20260404",
+  "news_count": 13,
+  "sector_scores": {
+    "科技": 7,
+    "基建": 6,
+    "农业": 6,
+    "新能源": 6,
+    "医药": 4,
+    "军工": 4,
+    "消费": 3,
+    "汽车": 2,
+    "房地产": 2,
+    "能源": 2,
+    "金融": 1
+  },
+  "top_keywords": [
+    [
+      "伊朗",
+      0.0595
+    ],
+    [
+      "祭扫",
+      0.0551
+    ],
+    [
+      "服务",
+      0.0419
+    ],
+    [
+      "英烈",
+      0.0372
+    ],
+    [
+      "万人次",
+      0.0322
+    ],
+    [
+      "清明",
+      0.0319
+    ],
+    [
+      "以军",
+      0.0302
+    ],
+    [
+      "群众",
+      0.0298
+    ],
+    [
+      "十五",
+      0.0297
+    ],
+    [
+      "国家",
+      0.0297
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】传承英烈精神 汇聚奋进力量",
+      "duration": "05:41",
+      "sectors": {
+        "基建": 1,
+        "农业": 1
+      },
+      "signal_score": 12,
+      "duration_score": 10,
+      "total_score": 31
+    },
+    {
+      "index": 2,
+      "title": "【凝心聚力 真抓实干 奋力实现“十五五”良好开局】浙江深入推进基本公共服务一体化改革 西藏民生项目加速推进 切实保障和改善民生",
+      "duration": "03:51",
+      "sectors": {
+        "医药": 4
+      },
+      "signal_score": 22,
+      "duration_score": 6,
+      "total_score": 36
+    },
+    {
+      "index": 3,
+      "title": "清明假期迎客流高峰 交通部门增运力",
+      "duration": "01:05",
+      "sectors": {
+        "科技": 1,
+        "基建": 4
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 8
+    },
+    {
+      "index": 4,
+      "title": "清明时节 踏青赏花正当时",
+      "duration": "01:50",
+      "sectors": {
+        "消费": 1
+      },
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 9
+    },
+    {
+      "index": 5,
+      "title": "我国进一步强化殡葬行业公益属性 倡导绿色文明新风",
+      "duration": "02:03",
+      "sectors": {
+        "新能源": 6
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 15
+    },
+    {
+      "index": 6,
+      "title": "今年一季度消费品以旧换新销售额超4300亿元",
+      "duration": "01:06",
+      "sectors": {
+        "消费": 2,
+        "汽车": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 10
+    },
+    {
+      "index": 7,
+      "title": "广东以政务改革“小切口”撬动营商环境“大提升”",
+      "duration": "02:24",
+      "sectors": {
+        "科技": 2,
+        "房地产": 1
+      },
+      "signal_score": 17,
+      "duration_score": 3,
+      "total_score": 23
+    },
+    {
+      "index": 8,
+      "title": "国内联播快讯",
+      "duration": "03:29",
+      "sectors": {
+        "科技": 4,
+        "金融": 1
+      },
+      "signal_score": 13,
+      "duration_score": 6,
+      "total_score": 21
+    },
+    {
+      "index": 9,
+      "title": "美以打击伊朗机场港口等目标 伊朗接连击落两架美军机",
+      "duration": "02:38",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 4
+    },
+    {
+      "index": 10,
+      "title": "以打击贝鲁特目标 黎真主党袭击以目标",
+      "duration": "00:35",
+      "sectors": {
+        "军工": 1,
+        "基建": 1
+      },
+      "signal_score": 1,
+      "duration_score": 0,
+      "total_score": 1
+    },
+    {
+      "index": 11,
+      "title": "粮农组织称中东冲突致全球食品价格上涨",
+      "duration": "00:36",
+      "sectors": {
+        "农业": 5,
+        "能源": 2
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 12,
+      "title": "国际联播快讯",
+      "duration": "01:52",
+      "sectors": {
+        "军工": 3,
+        "房地产": 1,
+        "汽车": 1
+      },
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 2
+    },
+    {
+      "index": 13,
+      "title": "春天里的中国",
+      "duration": "01:00",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "date": "20260405",
+  "news_count": 12,
+  "sector_scores": {
+    "军工": 20,
+    "能源": 17,
+    "消费": 10,
+    "医药": 10,
+    "农业": 8,
+    "科技": 7,
+    "基建": 5,
+    "新能源": 2
+  },
+  "top_keywords": [
+    [
+      "伊朗",
+      0.0682
+    ],
+    [
+      "清明",
+      0.047
+    ],
+    [
+      "英烈",
+      0.0392
+    ],
+    [
+      "谢雨丰",
+      0.0373
+    ],
+    [
+      "今天",
+      0.0312
+    ],
+    [
+      "医保",
+      0.0301
+    ],
+    [
+      "王宇飞",
+      0.028
+    ],
+    [
+      "以色列",
+      0.0267
+    ],
+    [
+      "游客",
+      0.026
+    ],
+    [
+      "景区",
+      0.0252
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】清明祭英烈 奋进新征程",
+      "duration": "05:47",
+      "sectors": {
+        "农业": 1
+      },
+      "signal_score": 7,
+      "duration_score": 10,
+      "total_score": 26
+    },
+    {
+      "index": 2,
+      "title": "春和景明 文旅消费热度攀升",
+      "duration": "03:18",
+      "sectors": {
+        "消费": 10
+      },
+      "signal_score": 0,
+      "duration_score": 6,
+      "total_score": 24
+    },
+    {
+      "index": 3,
+      "title": "全社会跨区域人员流动量持续攀升 暖心服务保障出行",
+      "duration": "01:35",
+      "sectors": {
+        "新能源": 2,
+        "基建": 5
+      },
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 10
+    },
+    {
+      "index": 4,
+      "title": "【新闻特写】以青春赴使命 用生命铸警魂",
+      "duration": "04:33",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 6,
+      "total_score": 12
+    },
+    {
+      "index": 5,
+      "title": "3月中国大宗商品价格指数环比上涨4%",
+      "duration": "00:44",
+      "sectors": {
+        "能源": 1
+      },
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 7
+    },
+    {
+      "index": 6,
+      "title": "神舟二十一号乘组在轨五个月 空间站各项任务稳步推进",
+      "duration": "01:30",
+      "sectors": {
+        "军工": 9,
+        "医药": 1
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 8
+    },
+    {
+      "index": 7,
+      "title": "【在希望的田野上】各地春耕有序推进",
+      "duration": "02:11",
+      "sectors": {
+        "科技": 1,
+        "军工": 4,
+        "农业": 7
+      },
+      "signal_score": 5,
+      "duration_score": 3,
+      "total_score": 11
+    },
+    {
+      "index": 8,
+      "title": "国内联播快讯",
+      "duration": "02:22",
+      "sectors": {
+        "科技": 5,
+        "军工": 2,
+        "医药": 9
+      },
+      "signal_score": 11,
+      "duration_score": 3,
+      "total_score": 16
+    },
+    {
+      "index": 9,
+      "title": "美以袭击伊朗石化设施和布什尔核电站 伊朗称使用多型号导弹和无人机打击美以目标",
+      "duration": "02:56",
+      "sectors": {
+        "军工": 4,
+        "能源": 8
+      },
+      "signal_score": 7,
+      "duration_score": 3,
+      "total_score": 26
+    },
+    {
+      "index": 10,
+      "title": "以军威胁空袭黎叙边境口岸 黎真主党和也门胡塞武装打击以目标",
+      "duration": "00:39",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 11,
+      "title": "国际联播快讯",
+      "duration": "01:25",
+      "sectors": {
+        "科技": 1,
+        "能源": 8
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 12,
+      "title": "二十四节气·清明",
+      "duration": "01:16",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    }
+  ]
+}

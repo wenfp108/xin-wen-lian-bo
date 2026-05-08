@@ -1,0 +1,181 @@
+{
+  "date": "20260415",
+  "news_count": 12,
+  "sector_scores": {
+    "基建": 6,
+    "军工": 4,
+    "消费": 3,
+    "能源": 2,
+    "半导体": 1,
+    "科技": 1,
+    "农业": 1
+  },
+  "top_keywords": [
+    [
+      "习近平",
+      0.1264
+    ],
+    [
+      "苏林",
+      0.1223
+    ],
+    [
+      "国家",
+      0.0839
+    ],
+    [
+      "15",
+      0.0738
+    ],
+    [
+      "总书记",
+      0.0737
+    ],
+    [
+      "越方",
+      0.0721
+    ],
+    [
+      "合作",
+      0.0612
+    ],
+    [
+      "主席",
+      0.0571
+    ],
+    [
+      "战略",
+      0.0544
+    ],
+    [
+      "愿同",
+      0.0541
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "习近平举行仪式欢迎越共中央总书记、国家主席苏林访华",
+      "duration": "03:02",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 6,
+      "total_score": 15
+    },
+    {
+      "index": 2,
+      "title": "习近平同越共中央总书记、国家主席苏林举行会谈",
+      "duration": "06:35",
+      "sectors": {
+        "半导体": 1,
+        "科技": 1,
+        "军工": 2,
+        "消费": 3,
+        "基建": 1
+      },
+      "signal_score": 27,
+      "duration_score": 10,
+      "total_score": 45
+    },
+    {
+      "index": 3,
+      "title": "习近平同苏林共同会见中越青年代表",
+      "duration": "03:17",
+      "sectors": {
+        "基建": 1
+      },
+      "signal_score": 13,
+      "duration_score": 6,
+      "total_score": 26
+    },
+    {
+      "index": 4,
+      "title": "习近平夫妇同苏林夫妇亲切话别",
+      "duration": "02:39",
+      "sectors": {},
+      "signal_score": 3,
+      "duration_score": 3,
+      "total_score": 12
+    },
+    {
+      "index": 5,
+      "title": "习近平会见俄罗斯外长",
+      "duration": "02:54",
+      "sectors": {},
+      "signal_score": 10,
+      "duration_score": 3,
+      "total_score": 18
+    },
+    {
+      "index": 6,
+      "title": "李强会见越共中央总书记、国家主席苏林",
+      "duration": "01:01",
+      "sectors": {},
+      "signal_score": 6,
+      "duration_score": 1,
+      "total_score": 11
+    },
+    {
+      "index": 7,
+      "title": "赵乐际会见越共中央总书记、国家主席苏林",
+      "duration": "01:00",
+      "sectors": {},
+      "signal_score": 16,
+      "duration_score": 1,
+      "total_score": 20
+    },
+    {
+      "index": 8,
+      "title": "第十一个全民国家安全教育日 各地各部门多形式开展国家安全教育",
+      "duration": "01:44",
+      "sectors": {},
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 9,
+      "title": "第139届广交会今天开幕",
+      "duration": "00:56",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 1
+    },
+    {
+      "index": 10,
+      "title": "国内联播快讯",
+      "duration": "02:01",
+      "sectors": {
+        "军工": 1,
+        "基建": 4,
+        "农业": 1
+      },
+      "signal_score": 4,
+      "duration_score": 3,
+      "total_score": 7
+    },
+    {
+      "index": 11,
+      "title": "美称或与伊重启谈判 伊称美应停止战争",
+      "duration": "02:09",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 3,
+      "duration_score": 3,
+      "total_score": 6
+    },
+    {
+      "index": 12,
+      "title": "国际货币基金组织下调世界经济增长预期",
+      "duration": "00:38",
+      "sectors": {
+        "能源": 2
+      },
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    }
+  ]
+}

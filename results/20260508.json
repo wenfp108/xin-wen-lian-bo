@@ -1,0 +1,200 @@
+{
+  "date": "20260508",
+  "news_count": 12,
+  "sector_scores": {
+    "消费": 15,
+    "科技": 13,
+    "军工": 8,
+    "农业": 8,
+    "基建": 6,
+    "能源": 5,
+    "汽车": 3,
+    "医药": 1,
+    "新能源": 1,
+    "金融": 1
+  },
+  "top_keywords": [
+    [
+      "粤港澳",
+      0.063
+    ],
+    [
+      "大湾",
+      0.0497
+    ],
+    [
+      "科技",
+      0.0431
+    ],
+    [
+      "行政复议",
+      0.0389
+    ],
+    [
+      "薛祥",
+      0.0379
+    ],
+    [
+      "创新",
+      0.0353
+    ],
+    [
+      "建设",
+      0.0302
+    ],
+    [
+      "检查",
+      0.0297
+    ],
+    [
+      "湾区",
+      0.0294
+    ],
+    [
+      "智能",
+      0.0294
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "应习近平邀请 塔吉克斯坦总统将对华进行国事访问",
+      "duration": "00:12",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 9
+    },
+    {
+      "index": 2,
+      "title": "【新思想引领新征程】粤港澳大湾区加快打造高质量发展动力源",
+      "duration": "05:32",
+      "sectors": {
+        "科技": 4,
+        "军工": 1,
+        "医药": 1,
+        "基建": 2,
+        "汽车": 3
+      },
+      "signal_score": 61,
+      "duration_score": 10,
+      "total_score": 79
+    },
+    {
+      "index": 3,
+      "title": "李强签署国务院令 公布修订后的《中华人民共和国行政复议法实施条例》",
+      "duration": "01:10",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 8
+    },
+    {
+      "index": 4,
+      "title": "丁薛祥在调研基础研究时强调 深入贯彻落实加强基础研究座谈会精神 全面提升基础研究水平和原始创新能力",
+      "duration": "02:58",
+      "sectors": {
+        "新能源": 1,
+        "能源": 1
+      },
+      "signal_score": 47,
+      "duration_score": 3,
+      "total_score": 56
+    },
+    {
+      "index": 5,
+      "title": "我国营商环境持续改善",
+      "duration": "02:43",
+      "sectors": {
+        "科技": 1,
+        "消费": 1
+      },
+      "signal_score": 9,
+      "duration_score": 3,
+      "total_score": 17
+    },
+    {
+      "index": 6,
+      "title": "培育消费新场景新业态 激发消费新动能",
+      "duration": "02:25",
+      "sectors": {
+        "科技": 1,
+        "消费": 12
+      },
+      "signal_score": 1,
+      "duration_score": 3,
+      "total_score": 13
+    },
+    {
+      "index": 7,
+      "title": "天舟十号船箭组合体转运至发射区 将于近日择机发射",
+      "duration": "01:18",
+      "sectors": {
+        "军工": 2
+      },
+      "signal_score": 1,
+      "duration_score": 1,
+      "total_score": 5
+    },
+    {
+      "index": 8,
+      "title": "【在希望的田野上】新技术新装备助力农业生产",
+      "duration": "02:10",
+      "sectors": {
+        "农业": 2
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 12
+    },
+    {
+      "index": 9,
+      "title": "国内联播快讯",
+      "duration": "03:33",
+      "sectors": {
+        "科技": 6,
+        "消费": 2,
+        "基建": 4,
+        "金融": 1,
+        "能源": 1
+      },
+      "signal_score": 10,
+      "duration_score": 6,
+      "total_score": 17
+    },
+    {
+      "index": 10,
+      "title": "日本民众举行集会抗议高市政权推动扩军修宪等危险动向",
+      "duration": "01:36",
+      "sectors": {},
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 4
+    },
+    {
+      "index": 11,
+      "title": "美国和伊朗在霍尔木兹海峡区域再度交火 伊媒称目前局势恢复正常",
+      "duration": "01:31",
+      "sectors": {
+        "军工": 2
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 12,
+      "title": "国际联播快讯",
+      "duration": "02:31",
+      "sectors": {
+        "科技": 1,
+        "军工": 3,
+        "农业": 6,
+        "能源": 3
+      },
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 3
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "date": "20260409",
+  "news_count": 11,
+  "sector_scores": {
+    "能源": 17,
+    "新能源": 14,
+    "消费": 11,
+    "科技": 6,
+    "军工": 4,
+    "医药": 2,
+    "农业": 1
+  },
+  "top_keywords": [
+    [
+      "黎巴嫩",
+      0.073
+    ],
+    [
+      "伊朗",
+      0.0655
+    ],
+    [
+      "以色列",
+      0.0615
+    ],
+    [
+      "特朗普",
+      0.045
+    ],
+    [
+      "服务业",
+      0.0403
+    ],
+    [
+      "总书记",
+      0.0395
+    ],
+    [
+      "停火",
+      0.0387
+    ],
+    [
+      "习近平",
+      0.0374
+    ],
+    [
+      "能源",
+      0.0358
+    ],
+    [
+      "日称",
+      0.0322
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "应习近平邀请 越共中央总书记、国家主席苏林将访华",
+      "duration": "00:15",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 9
+    },
+    {
+      "index": 2,
+      "title": "发扬自我革命精神 深化思想政治锻造——习近平主席在全军高级干部培训班开班式上的重要讲话引发热烈反响",
+      "duration": "07:03",
+      "sectors": {},
+      "signal_score": 41,
+      "duration_score": 10,
+      "total_score": 59
+    },
+    {
+      "index": 3,
+      "title": "努力开创服务业高质量发展新局面——习近平总书记就服务业发展作出的重要指示引发热烈反响",
+      "duration": "04:03",
+      "sectors": {},
+      "signal_score": 49,
+      "duration_score": 6,
+      "total_score": 62
+    },
+    {
+      "index": 4,
+      "title": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》",
+      "duration": "01:08",
+      "sectors": {},
+      "signal_score": 19,
+      "duration_score": 1,
+      "total_score": 26
+    },
+    {
+      "index": 5,
+      "title": "【凝心聚力 真抓实干 奋力实现“十五五”良好开局】山东：陆海并进 加快建设新型能源体系 贵州：高效利用 推动资源全产业链发展",
+      "duration": "03:24",
+      "sectors": {
+        "新能源": 13,
+        "科技": 1,
+        "农业": 1,
+        "能源": 16
+      },
+      "signal_score": 30,
+      "duration_score": 6,
+      "total_score": 46
+    },
+    {
+      "index": 6,
+      "title": "前2个月我国消费品工业开局良好",
+      "duration": "01:35",
+      "sectors": {
+        "新能源": 1,
+        "消费": 10,
+        "医药": 1
+      },
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 12
+    },
+    {
+      "index": 7,
+      "title": "国内联播快讯",
+      "duration": "03:09",
+      "sectors": {
+        "科技": 4,
+        "消费": 1,
+        "医药": 1
+      },
+      "signal_score": 10,
+      "duration_score": 6,
+      "total_score": 19
+    },
+    {
+      "index": 8,
+      "title": "美称美伊将于11日在伊斯兰堡举行谈判 伊朗称3项停战条款遭违反",
+      "duration": "02:26",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 5
+    },
+    {
+      "index": 9,
+      "title": "以称对黎真主党发起最大规模打击 黎称袭击致254人死亡",
+      "duration": "01:42",
+      "sectors": {
+        "军工": 1
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 5
+    },
+    {
+      "index": 10,
+      "title": "日本民众集会抗议高市政权破坏和平宪法",
+      "duration": "00:56",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 11,
+      "title": "国际联播快讯",
+      "duration": "01:33",
+      "sectors": {
+        "科技": 1,
+        "军工": 3,
+        "能源": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    }
+  ]
+}

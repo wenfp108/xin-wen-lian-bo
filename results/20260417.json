@@ -1,0 +1,217 @@
+{
+  "date": "20260417",
+  "news_count": 14,
+  "sector_scores": {
+    "军工": 18,
+    "消费": 15,
+    "能源": 15,
+    "科技": 12,
+    "农业": 10,
+    "新能源": 4,
+    "半导体": 3,
+    "基建": 2,
+    "医药": 1
+  },
+  "top_keywords": [
+    [
+      "16",
+      0.0818
+    ],
+    [
+      "17",
+      0.0722
+    ],
+    [
+      "乡村",
+      0.0579
+    ],
+    [
+      "伊朗",
+      0.0428
+    ],
+    [
+      "我国",
+      0.0378
+    ],
+    [
+      "停火",
+      0.0372
+    ],
+    [
+      "01",
+      0.0337
+    ],
+    [
+      "航天员",
+      0.032
+    ],
+    [
+      "振兴",
+      0.03
+    ],
+    [
+      "出舱",
+      0.0289
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "习近平致电祝贺盖莱当选连任吉布提总统",
+      "duration": "00:48",
+      "sectors": {},
+      "signal_score": 1,
+      "duration_score": 0,
+      "total_score": 10
+    },
+    {
+      "index": 2,
+      "title": "【新思想引领新征程】因地制宜 加快和美乡村建设",
+      "duration": "04:45",
+      "sectors": {
+        "科技": 1,
+        "消费": 8,
+        "农业": 6
+      },
+      "signal_score": 29,
+      "duration_score": 6,
+      "total_score": 43
+    },
+    {
+      "index": 3,
+      "title": "李强主持召开国务院常务会议",
+      "duration": "01:57",
+      "sectors": {},
+      "signal_score": 13,
+      "duration_score": 1,
+      "total_score": 21
+    },
+    {
+      "index": 4,
+      "title": "王沪宁出席第七届台胞社团论坛开幕式",
+      "duration": "01:43",
+      "sectors": {},
+      "signal_score": 9,
+      "duration_score": 1,
+      "total_score": 16
+    },
+    {
+      "index": 5,
+      "title": "【“十五五”开好局起好步】政策持续发力 巩固经济稳中向好态势",
+      "duration": "02:13",
+      "sectors": {
+        "科技": 1,
+        "消费": 3,
+        "医药": 1,
+        "基建": 1
+      },
+      "signal_score": 17,
+      "duration_score": 3,
+      "total_score": 25
+    },
+    {
+      "index": 6,
+      "title": "我国核电总装机容量位居世界第一",
+      "duration": "01:33",
+      "sectors": {
+        "半导体": 2,
+        "能源": 9
+      },
+      "signal_score": 9,
+      "duration_score": 1,
+      "total_score": 19
+    },
+    {
+      "index": 7,
+      "title": "神舟二十一号航天员乘组圆满完成第三次出舱活动",
+      "duration": "01:17",
+      "sectors": {
+        "军工": 10
+      },
+      "signal_score": 2,
+      "duration_score": 1,
+      "total_score": 11
+    },
+    {
+      "index": 8,
+      "title": "第六届消博会取得阶段性成果",
+      "duration": "01:06",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 3
+    },
+    {
+      "index": 9,
+      "title": "第139届广交会：智能展品开拓外贸新增长点",
+      "duration": "00:46",
+      "sectors": {
+        "科技": 2,
+        "军工": 2,
+        "消费": 1
+      },
+      "signal_score": 1,
+      "duration_score": 0,
+      "total_score": 2
+    },
+    {
+      "index": 10,
+      "title": "国内联播快讯",
+      "duration": "04:04",
+      "sectors": {
+        "新能源": 4,
+        "半导体": 1,
+        "科技": 6,
+        "军工": 4,
+        "消费": 3,
+        "能源": 1
+      },
+      "signal_score": 4,
+      "duration_score": 6,
+      "total_score": 10
+    },
+    {
+      "index": 11,
+      "title": "国际人士表示中国经济稳健开局 为世界发展注入稳定性",
+      "duration": "02:05",
+      "sectors": {},
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 5
+    },
+    {
+      "index": 12,
+      "title": "美称继续对伊朗海上封锁 伊朗称将回击侵略",
+      "duration": "01:54",
+      "sectors": {
+        "基建": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 13,
+      "title": "日本民众抗议高市政府拟放宽武器出口限制",
+      "duration": "01:00",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    },
+    {
+      "index": 14,
+      "title": "国际联播快讯",
+      "duration": "02:39",
+      "sectors": {
+        "科技": 2,
+        "军工": 2,
+        "农业": 4,
+        "能源": 5
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 5
+    }
+  ]
+}

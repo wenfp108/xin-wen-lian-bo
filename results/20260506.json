@@ -1,0 +1,203 @@
+{
+  "date": "20260506",
+  "news_count": 13,
+  "sector_scores": {
+    "消费": 51,
+    "科技": 37,
+    "能源": 10,
+    "基建": 6,
+    "新能源": 4,
+    "房地产": 3,
+    "汽车": 1,
+    "军工": 1
+  },
+  "top_keywords": [
+    [
+      "消费",
+      0.0673
+    ],
+    [
+      "假期",
+      0.0615
+    ],
+    [
+      "五一",
+      0.0537
+    ],
+    [
+      "欧盟",
+      0.0374
+    ],
+    [
+      "机器人",
+      0.0371
+    ],
+    [
+      "伊朗",
+      0.0332
+    ],
+    [
+      "增长",
+      0.027
+    ],
+    [
+      "十五",
+      0.0255
+    ],
+    [
+      "无障碍",
+      0.0253
+    ],
+    [
+      "广西",
+      0.0247
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "【新思想引领新征程】“五一”假期消费市场活力迸发",
+      "duration": "06:35",
+      "sectors": {
+        "科技": 4,
+        "消费": 44
+      },
+      "signal_score": 18,
+      "duration_score": 10,
+      "total_score": 42
+    },
+    {
+      "index": 2,
+      "title": "王沪宁会见孟加拉国外交部长",
+      "duration": "00:59",
+      "sectors": {},
+      "signal_score": 4,
+      "duration_score": 0,
+      "total_score": 12
+    },
+    {
+      "index": 3,
+      "title": "【“十五五”开好局起好步】奋力谱写中国式现代化广西篇章 浙江高质量发展建设共同富裕示范区",
+      "duration": "03:17",
+      "sectors": {
+        "新能源": 1,
+        "科技": 3,
+        "基建": 1
+      },
+      "signal_score": 35,
+      "duration_score": 6,
+      "total_score": 48
+    },
+    {
+      "index": 4,
+      "title": "“五一”假期全社会跨区域人员流动量创历史同期新高",
+      "duration": "01:02",
+      "sectors": {
+        "新能源": 1,
+        "消费": 1,
+        "基建": 5,
+        "能源": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 7
+    },
+    {
+      "index": 5,
+      "title": "一季度我国机器人出口实现开门红",
+      "duration": "00:58",
+      "sectors": {
+        "科技": 11
+      },
+      "signal_score": 2,
+      "duration_score": 0,
+      "total_score": 12
+    },
+    {
+      "index": 6,
+      "title": "各地加快推动“好房子”建设",
+      "duration": "01:21",
+      "sectors": {
+        "新能源": 2,
+        "房地产": 3
+      },
+      "signal_score": 9,
+      "duration_score": 1,
+      "total_score": 14
+    },
+    {
+      "index": 7,
+      "title": "我国生态环境监测体系持续向数字化智能化转型",
+      "duration": "01:14",
+      "sectors": {},
+      "signal_score": 8,
+      "duration_score": 1,
+      "total_score": 12
+    },
+    {
+      "index": 8,
+      "title": "【一线调研】草原上的新产业",
+      "duration": "02:40",
+      "sectors": {
+        "科技": 15,
+        "能源": 1
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 7
+    },
+    {
+      "index": 9,
+      "title": "国内联播快讯",
+      "duration": "03:12",
+      "sectors": {
+        "科技": 4,
+        "消费": 6
+      },
+      "signal_score": 7,
+      "duration_score": 6,
+      "total_score": 14
+    },
+    {
+      "index": 10,
+      "title": "日本和平团体举行集会 抗议日本政府一系列危险动向",
+      "duration": "00:55",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 0,
+      "total_score": 0
+    },
+    {
+      "index": 11,
+      "title": "伊朗称美极限施压不会成功 美宣布暂停“自由计划”行动",
+      "duration": "01:18",
+      "sectors": {},
+      "signal_score": 4,
+      "duration_score": 1,
+      "total_score": 5
+    },
+    {
+      "index": 12,
+      "title": "欧盟敦促美国遵守已有贸易协议",
+      "duration": "00:56",
+      "sectors": {
+        "汽车": 1
+      },
+      "signal_score": 3,
+      "duration_score": 0,
+      "total_score": 3
+    },
+    {
+      "index": 13,
+      "title": "国际联播快讯",
+      "duration": "03:16",
+      "sectors": {
+        "军工": 1,
+        "能源": 8
+      },
+      "signal_score": 0,
+      "duration_score": 6,
+      "total_score": 6
+    }
+  ]
+}

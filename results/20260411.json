@@ -1,0 +1,176 @@
+{
+  "date": "20260411",
+  "news_count": 10,
+  "sector_scores": {
+    "新能源": 16,
+    "消费": 15,
+    "科技": 9,
+    "汽车": 7,
+    "能源": 4,
+    "农业": 3,
+    "军工": 3,
+    "基建": 1,
+    "金融": 1
+  },
+  "top_keywords": [
+    [
+      "10",
+      0.108
+    ],
+    [
+      "伊朗",
+      0.0647
+    ],
+    [
+      "习近平",
+      0.0597
+    ],
+    [
+      "11",
+      0.054
+    ],
+    [
+      "营商",
+      0.0455
+    ],
+    [
+      "氢能",
+      0.0438
+    ],
+    [
+      "黎巴嫩",
+      0.0362
+    ],
+    [
+      "以色列",
+      0.0343
+    ],
+    [
+      "总书记",
+      0.0286
+    ],
+    [
+      "十五",
+      0.0281
+    ]
+  ],
+  "items": [
+    {
+      "index": 1,
+      "title": "为两岸谋和平、为同胞谋福祉、为民族谋复兴——习近平总书记会见中国国民党主席郑丽文发表重要讲话引发热烈反响",
+      "duration": "06:40",
+      "sectors": {},
+      "signal_score": 28,
+      "duration_score": 10,
+      "total_score": 47
+    },
+    {
+      "index": 2,
+      "title": "在交流合作中相知相亲 在互学互鉴中携手前行——习近平主席致中美“乒乓外交”55周年纪念大会暨中美青少年体育交流系列活动启动仪式的贺信引发热烈反响",
+      "duration": "03:44",
+      "sectors": {},
+      "signal_score": 6,
+      "duration_score": 6,
+      "total_score": 20
+    },
+    {
+      "index": 3,
+      "title": "【凝心聚力 真抓实干 奋力实现“十五五”良好开局】河南积极融入服务全国统一大市场 新疆不断优化营商环境 推动高质量发展",
+      "duration": "03:40",
+      "sectors": {
+        "消费": 1,
+        "基建": 1
+      },
+      "signal_score": 27,
+      "duration_score": 6,
+      "total_score": 40
+    },
+    {
+      "index": 4,
+      "title": "一季度全国期货市场服务实体经济能力持续增强",
+      "duration": "01:03",
+      "sectors": {
+        "新能源": 2,
+        "科技": 3,
+        "能源": 2
+      },
+      "signal_score": 3,
+      "duration_score": 1,
+      "total_score": 10
+    },
+    {
+      "index": 5,
+      "title": "我国氢能产业加速打开万亿新空间",
+      "duration": "02:19",
+      "sectors": {
+        "新能源": 13,
+        "汽车": 2
+      },
+      "signal_score": 3,
+      "duration_score": 3,
+      "total_score": 16
+    },
+    {
+      "index": 6,
+      "title": "多元业态融合 打造文旅消费新热点",
+      "duration": "02:10",
+      "sectors": {
+        "消费": 10,
+        "农业": 2
+      },
+      "signal_score": 2,
+      "duration_score": 3,
+      "total_score": 19
+    },
+    {
+      "index": 7,
+      "title": "国内联播快讯",
+      "duration": "02:46",
+      "sectors": {
+        "新能源": 1,
+        "科技": 4,
+        "消费": 1,
+        "农业": 1,
+        "能源": 1,
+        "汽车": 5
+      },
+      "signal_score": 6,
+      "duration_score": 3,
+      "total_score": 12
+    },
+    {
+      "index": 8,
+      "title": "美国和伊朗谈判定于今日在巴基斯坦首都举行",
+      "duration": "02:40",
+      "sectors": {},
+      "signal_score": 0,
+      "duration_score": 3,
+      "total_score": 5
+    },
+    {
+      "index": 9,
+      "title": "以军袭击致十余名黎巴嫩政府工作人员死亡",
+      "duration": "01:11",
+      "sectors": {
+        "军工": 3
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 2
+    },
+    {
+      "index": 10,
+      "title": "国际联播快讯",
+      "duration": "01:34",
+      "sectors": {
+        "科技": 2,
+        "消费": 3,
+        "金融": 1,
+        "能源": 1
+      },
+      "signal_score": 0,
+      "duration_score": 1,
+      "total_score": 1
+    }
+  ]
+}
