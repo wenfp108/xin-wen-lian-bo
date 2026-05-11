@@ -330,7 +330,7 @@ def save_result(report, date_str):
 
     # 推送到 Central-Bank
     if bank_repo:
-        y, m, d = date_str.split("-")
+        y, m, d = date_str[:4], date_str[4:6], date_str[6:8]
         path = f"data/policy/{y}/{m}/{d}/{date_str}.json"
         try:
             try:
