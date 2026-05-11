@@ -95,13 +95,11 @@ def parse_duration(duration_str):
 
 def parse_news_items(text):
     items = []
-    sections = re.split(r'
-### ', text)
+    sections = re.split(r'\n### ', text)
     for i, section in enumerate(sections):
         if i == 0:
             continue
-        lines = section.strip().split('
-')
+        lines = section.strip().split('\n')
         title = lines[0].strip()
         duration_str = None
         duration_sec = 0
@@ -112,8 +110,7 @@ def parse_news_items(text):
                 duration_str = m.group(1)
                 duration_sec = parse_duration(duration_str)
                 break
-        content = '
-'.join(lines[1:])
+        content = '\n'.join(lines[1:])
         content = re.sub(r'<[^>]+>', '', content)
         content = re.sub(r'\[查看原文\].*', '', content)
         content = content.strip()
@@ -282,71 +279,42 @@ def generate_report(date_str=None):
 
     trends = analyze_trends(7)
 
-    md = f"# 📰 新闻联播政策信号分析 ({result['date']})
+    md = f"# 📰 新闻联播政策信号分析 ({result['date']})\n\n"
+    md += f"> **新闻数量**: {result['news_count']} 条\n\n"
 
-"
-    md += f"> **新闻数量**: {result['news_count']} 条
-
-"
-
-    md += "## 📊 行业热度
-
-"
-    md += "| 行业 | 分数 | 热度 |
-|:---|:---|:---|
-"
+    md += "## 📊 行业热度\n\n"
+    md += "| 行业 | 分数 | 热度 |\n|:---|:---|:---|\n"
     for sector, score in result['sector_scores'].items():
         bar = "█" * min(score, 20)
-        md += f"| {sector} | {score} | {bar} |
-"
-    md += "
-"
+        md += f"| {sector} | {score} | {bar} |\n"
+    md += "\n"
 
-    md += "## 🔥 重点新闻
-
-"
-    md += "| 分数 | 时长 | 标题 | 行业 |
-|:---|:---|:---|:---|
-"
+    md += "## 🔥 重点新闻\n\n"
+    md += "| 分数 | 时长 | 标题 | 行业 |\n|:---|:---|:---|:---|\n"
     sorted_items = sorted(result['items'], key=lambda x: -x['total_score'])
     for item in sorted_items[:5]:
         sectors = ", ".join(item['sectors'].keys()) if item['sectors'] else "-"
         title_short = item['title'][:40]
-        md += f"| {item['total_score']} | {item['duration']} | {title_short} | {sectors} |
-"
-    md += "
-"
+        md += f"| {item['total_score']} | {item['duration']} | {title_short} | {sectors} |\n"
+    md += "\n"
 
-    md += "## 🔑 关键词
-
-"
+    md += "## 🔑 关键词\n\n"
     for kw, w in result['top_keywords']:
-        md += f"- **{kw}** ({w})
-"
-    md += "
-"
+        md += f"- **{kw}** ({w})\n"
+    md += "\n"
 
     if trends:
-        md += f"## 📈 7天趋势 ({trends['period']})
-
-"
-        md += "| 行业 | 均值 | 最新 | 趋势 |
-|:---|:---|:---|:---|
-"
+        md += f"## 📈 7天趋势 ({trends['period']})\n\n"
+        md += "| 行业 | 均值 | 最新 | 趋势 |\n|:---|:---|:---|:---|\n"
         for sector, data in trends['sector_trend'].items():
             avg = sum(d['score'] for d in data) / len(data)
             recent = data[-1]['score'] if data else 0
             trend = "↑" if recent > avg else "↓" if recent < avg else "→"
-            md += f"| {sector} | {avg:.1f} | {recent} | {trend} |
-"
-        md += "
-"
-        md += "### 高频关键词
-
-"
+            md += f"| {sector} | {avg:.1f} | {recent} | {trend} |\n"
+        md += "\n"
+        md += "### 高频关键词\n\n"
         for kw, count in trends['top_keywords'][:10]:
-            md += f"- {kw} ({count}天)
-"
+            md += f"- {kw} ({count}天)\n"
 
     return md, date_str
 
@@ -434,17 +402,14 @@ if __name__ == '__main__':
         days = int(sys.argv[2]) if len(sys.argv) > 2 else 7
         trends = analyze_trends(days)
         if trends:
-            print(f"
-📈 趋势分析 ({trends['period']})")
-            print(f"   覆盖 {trends['days']} 天
-")
+            print(f"\n📈 趋势分析 ({trends['period']})")
+            print(f"   覆盖 {trends['days']} 天\n")
             for sector, data in trends['sector_trend'].items():
                 avg = sum(d['score'] for d in data) / len(data)
                 recent = data[-1]['score'] if data else 0
                 trend = "↑" if recent > avg else "↓" if recent < avg else "→"
                 print(f"   {sector:8} 均值:{avg:.1f} 最新:{recent} {trend}")
-            print(f"
-🔑 高频关键词：")
+            print(f"\n🔑 高频关键词：")
             for kw, count in trends['top_keywords']:
                 print(f"   {kw} ({count}天)")
 
