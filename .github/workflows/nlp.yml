@@ -4,6 +4,20 @@ on:
   schedule:
     - cron: '0 2 * * *'  # UTC 02:00 = 北京时间 10:00
   workflow_dispatch:
+    inputs:
+      date:
+        description: '指定日期 (YYYYMMDD)，留空则处理最新一天'
+        required: false
+        default: ''
+      mode:
+        description: '运行模式'
+        required: false
+        default: 'run'
+        type: choice
+        options:
+          - run
+          - all
+          - date
 
 jobs:
   analyze:
@@ -22,4 +36,11 @@ jobs:
       - name: Run NLP Analysis
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: python policy_nlp.py run
+        run: |
+          if [ "${{ inputs.mode }}" = "date" ] && [ -n "${{ inputs.date }}" ]; then
+            python policy_nlp.py date ${{ inputs.date }}
+          elif [ "${{ inputs.mode }}" = "all" ]; then
+            python policy_nlp.py all
+          else
+            python policy_nlp.py run
+          fi
