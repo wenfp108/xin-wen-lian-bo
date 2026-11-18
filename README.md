@@ -92,8 +92,8 @@ python policy_nlp.py date 20260508  # 指定日期
 | 仓库 | 用途 |
 |:---|:---|
 | [xin-wen-lian-bo](https://github.com/wenfp108/xin-wen-lian-bo) | 本仓库。爬虫 + NLP 分析 |
-| [Central-Bank](https://github.com/wenfp108/Central-Bank) | 数据存储。policy 分析结果 |
-| [refinery-erngine](https://github.com/wenfp108/refinery-erngine) | 情报引擎。读取 Central-Bank 数据 |
+| Central-Bank（私有仓库） | 数据存储。policy 分析结果 |
+| [refinery-engine](https://github.com/wenfp108/refinery-engine) | 情报引擎。读取 Central-Bank 数据 |
 
 ## 新闻列表
 
